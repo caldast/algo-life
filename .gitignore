@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Caldast.AlgoLife/bin/Debug
+/.vs/Caldast.AlgoLife/v15/sqlite3
+/Caldast.AlgoLife/obj
+/Caldast.AlgoLife.UnitTests/bin/Debug
+/Caldast.AlgoLife.UnitTests/obj
+/packages
