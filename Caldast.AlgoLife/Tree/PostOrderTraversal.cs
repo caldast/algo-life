@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Caldast.AlgoLife.Tree;
+using System;
 using System.Collections.Generic;
 
 namespace Caldast.AlgoLife
 {
     class PostOrderTraversal<T>
     {
-        public void IterativeUsingOneStack(TreeNode<T> treeNode)
+        public void IterativeUsingOneStack(BinaryTreeNode<T> treeNode)
         {
-            var stack = new Stack<TreeNode<T>>();
-            TreeNode<T> current = treeNode;
+            var stack = new Stack<BinaryTreeNode<T>>();
+            BinaryTreeNode<T> current = treeNode;
 
             do
             {
@@ -18,7 +19,7 @@ namespace Caldast.AlgoLife
                     current = current.Left;
                 }
 
-                TreeNode<T> top = stack.Peek().Right;
+                BinaryTreeNode<T> top = stack.Peek().Right;
 
                 if (top == null)
                 {
@@ -44,12 +45,12 @@ namespace Caldast.AlgoLife
 
 
         }
-        public void IterativeUsingTwoStacks(TreeNode<T> treeNode)
+        public void IterativeUsingTwoStacks(BinaryTreeNode<T> treeNode)
         {
-            var stack = new Stack<TreeNode<T>>();
-            var secondaryStack = new Stack<TreeNode<T>>();
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var secondaryStack = new Stack<BinaryTreeNode<T>>();
 
-            TreeNode<T> current = treeNode;
+            BinaryTreeNode<T> current = treeNode;
             stack.Push(treeNode);
 
             while (stack.Count != 0)
@@ -84,11 +85,11 @@ namespace Caldast.AlgoLife
         /// Implemented as reverse preorder with right node pushed first and then left
         /// </summary>
         /// <param name="treeNode"></param>
-        public void Iterative(TreeNode<T> treeNode)
+        public void Iterative(BinaryTreeNode<T> treeNode)
         {
-            var stack = new Stack<TreeNode<T>>();
-            var temp = new Stack<TreeNode<T>>();
-            TreeNode<T> current = treeNode;
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var temp = new Stack<BinaryTreeNode<T>>();
+            BinaryTreeNode<T> current = treeNode;
 
             while (true)
             {
@@ -104,7 +105,7 @@ namespace Caldast.AlgoLife
                 if (temp.Count == 0)
                     break;
 
-                TreeNode<T> p = temp.Pop();
+                BinaryTreeNode<T> p = temp.Pop();
                 current = p.Left;
 
             }
@@ -113,7 +114,7 @@ namespace Caldast.AlgoLife
                 Console.WriteLine(stack.Pop().Value);
         }
 
-        public void Recursive(TreeNode<T> treeNode)
+        public void Recursive(BinaryTreeNode<T> treeNode)
         {
             if (treeNode == null)
                 return;

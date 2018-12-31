@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1A452763-2991-4F66-9FB4-C5F973A69BF5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp100</RootNamespace>
-    <AssemblyName>ConsoleApp100</AssemblyName>
+    <RootNamespace>Caldast.AlgoLife</RootNamespace>
+    <AssemblyName>Caldast.AlgoLife</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -63,6 +63,8 @@
     <Compile Include="LinkedList\XorLinkedList.cs" />
     <Compile Include="Number\NumberProblems.cs" />
     <Compile Include="Recursion\CoinGame.cs" />
+    <Compile Include="Tree\BinaryTree.cs" />
+    <Compile Include="Tree\BinaryTreeNode.cs" />
     <Compile Include="Tree\RedBlackTree.cs" />
     <Compile Include="Sorting_Searching\BubbleSort.cs" />
     <Compile Include="Sorting_Searching\BucketSort.cs" />

@@ -55,6 +55,7 @@
     <Compile Include="ArrayProblemsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringOperationTest.cs" />
+    <Compile Include="Tree\BinaryTreeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

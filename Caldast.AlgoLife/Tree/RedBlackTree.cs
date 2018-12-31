@@ -1,6 +1,6 @@
 ﻿namespace Caldast.AlgoLife
 {
-    class RedBlackTree
+    public class RedBlackTree
     {
 
         private void RbTransplant(RbTreeNode root, RbTreeNode u, RbTreeNode v)
@@ -158,28 +158,33 @@
                 if (z == z.Parent.Left)
                 {
                     RbTreeNode w = z.Parent.Right;
+                    
                     if (w.Color =="RED")
-                    {//Case1
+                    {
+                        // Case1
                         w.Color = "BLACK";
                         z.Parent.Color ="RED";
                         LeftRotate(root, z.Parent);
                         w = z.Parent.Right;
                     }
-                    //____________Case2__________________
+                    
                     if (w.Left.Color == "BLACK" && w.Right.Color == "BLACK")
                     {
+                        //Case2
                         w.Color ="RED";
                         z = z.Parent;
                     }
                     else if (w.Right.Color == "BLACK")
-                    {//Case3->Case4
+                    {
+                        //Case3->Case4
                         w.Left.Color = "BLACK";
                         w.Color ="RED";
                         RightRotate(root, w);
                         w = z.Parent.Right;
                     }
                     else
-                    {//Case4
+                    {
+                        //Case4
                         w.Color = z.Parent.Color;
                         z.Parent.Color = "BLACK";
                         w.Right.Color = "BLACK";
@@ -189,30 +194,34 @@
                 }
                 else
                 {
-                    //if-else
+                   
                     RbTreeNode w = z.Parent.Left;
                     if (w.Color =="RED")
-                    {//Case1
+                    {
+                        //Case1
                         w.Color = "BLACK";
                         z.Parent.Color ="RED";
                         RightRotate(root, z.Parent);
                         w = z.Parent.Left;
                     }
-                    //____________Case2__________________
+                    
                     if (w.Left.Color == "BLACK" && w.Right.Color == "BLACK")
                     {
+                        //Case2
                         w.Color ="RED";
                         z = z.Parent;
                     }
                     else if (w.Left.Color == "BLACK")
-                    {//Case3.Case4
+                    {
+                        //Case3.Case4
                         w.Left.Color = "BLACK";
                         w.Color ="RED";
                         LeftRotate(root, w);
                         w = z.Parent.Left;
                     }
                     else
-                    {//Case4
+                    {
+                        //Case4
                         w.Color = z.Parent.Color;
                         z.Parent.Color = "BLACK";
                         w.Left.Color = "BLACK";
@@ -290,102 +299,6 @@
 
             return current;
         }
-
-       // void RBTreeInsertFixUp(RbTreeNode tree, RbTreeNode z)
-       // {
-       //     while (z.Parent.Color == "RED")
-       //     {
-       //         if (z.Parent == z.Parent.Parent.Left)
-       //         {//y在右边
-       //             RbTreeNode y = z.Parent.Parent.Right;//设定y
-       //             if (y.Color == "RED")
-       //             {//Case1
-       //                 z.Parent.Color = "BLACK";
-       //                 y.Color = "BLACK";
-       //                 z.Parent.Parent.Color = "RED";
-       //                 z = z.Parent.Parent;
-       //             }
-       //             else
-       //             {
-       //                 if (z == z.Parent.Right)
-       //                 {//Case2
-       //                     z = z.Parent;//旋转会改变新结点的位置，所以要调整
-       //                     LeftRotate(tree, z); //case2->case3
-       //                 }
-       //                 z.Parent.Color = "BLACK";//Case3
-       //                 z.Parent.Parent.Color = "RED";
-       //                 RightRotate(tree, z.Parent.Parent);
-       //             }
-       //         }
-       //         else
-       //         {//y在左边
-       //             RbTreeNode y = z.Parent.Parent.Left;
-       //             if (y.Color == "RED")
-       //             {
-       //                 z.Parent.Color = "BLACK";
-       //                 y.Color = "BLACK";
-       //                 z.Parent.Parent.Color = "RED";
-       //                 z = z.Parent.Parent;
-       //             }
-       //             else
-       //             {
-       //                 if (z == z.Parent.Left)
-       //                 {//Case2
-       //                     z = z.Parent;//旋转会改变新结点的位置，所以要调整
-       //                     RightRotate(tree, z); //case2->case3
-       //                 }
-       //                 z.Parent.Color = "BLACK";//Case3
-       //                 z.Parent.Parent.Color = "RED";
-       //                 LeftRotate(tree, z.Parent.Parent);
-       //             }
-       //         }//if-else
-       //     }//while
-       //     tree.Color = "BLACK";
-       // }//RBInsertFixUp 
-
-        
-       //public void RBTreeInsert(RbTreeNode root, int k)
-       // {
-       //     RbTreeNode y = RbTreeNode.Nil;
-       //     RbTreeNode x = root;
-       //     RbTreeNode z = new RbTreeNode(null,"BLACK");
-       //     z.Value = k;
-       //     z.Parent = z.Left = z.Right = RbTreeNode.Nil;//初始化  
-
-       //     //找到要插入的位置
-       //     while (x != RbTreeNode.Nil)
-       //     {
-       //         y = x;
-       //         if (z.Value < x.Value)
-       //         {
-       //             x = x.Left;
-       //         }
-       //         else
-       //         {
-       //             x = x.Right;
-       //         }
-       //     }
-       //     //和周边点增加关系
-       //     z.Parent = y;
-       //     if (y == RbTreeNode.Nil)
-       //     {
-       //         root = z;
-       //     }
-       //     else
-       //     {
-       //         if (k < y.Value)
-       //         {
-       //             y.Left = z;
-       //         }
-       //         else
-       //         {
-       //             y.Right = z;
-       //         }
-       //     }
-       //     z.Left = z.Right = RbTreeNode.Nil;
-       //     z.Color = "RED";
-       //     RBTreeInsertFixUp(root, z);
-       // }
 
 
     }

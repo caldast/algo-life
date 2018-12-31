@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caldast.AlgoLife", "Caldast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caldast.AlgoLife.UnitTests", "Caldast.AlgoLife.UnitTests\Caldast.AlgoLife.UnitTests.csproj", "{E17E0F24-EF2A-423C-8335-1E10EB8A35AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns", "..\DesignPatterns\DesignPatterns\DesignPatterns.csproj", "{291091DD-0972-4F46-9D15-429538A1E33C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caldast.AlgoLife.DesignPatterns", "..\..\..\Documents\Visual Studio 2017\Projects\DesignPatterns\DesignPatterns\Caldast.AlgoLife.DesignPatterns.csproj", "{291091DD-0972-4F46-9D15-429538A1E33C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +32,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4EDCAA55-9A21-4D0E-A209-25049A65BEC5}
+		SolutionGuid = {8FC1610F-D79C-4B02-8F88-50597A139D51}
 	EndGlobalSection
 EndGlobal

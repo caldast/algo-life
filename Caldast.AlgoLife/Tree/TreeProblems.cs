@@ -6,13 +6,13 @@ namespace Caldast.AlgoLife.Tree
 {
     class TreeProblems
     {
-        public void Flatten(TreeNode<int> root)
+        public void Flatten(BinaryTreeNode<int> root)
         {
-            TreeNode<int> current = root;
+            BinaryTreeNode<int> current = root;
             FlattenUtil(root);
         }
-        TreeNode<int> prev = null;
-        private void FlattenUtil(TreeNode<int> current)
+        BinaryTreeNode<int> prev = null;
+        private void FlattenUtil(BinaryTreeNode<int> current)
         {
             if (current == null)
             {
@@ -26,11 +26,11 @@ namespace Caldast.AlgoLife.Tree
             current.Left = null;
             prev = current;
         }
-        public bool IsBinaryTreeABST(TreeNode<char> root)
+        public bool IsBinaryTreeABST(BinaryTreeNode<char> root)
         {
            return IsBinaryTreeABSTHelper(root, char.MinValue, char.MaxValue);
         }
-        private bool IsBinaryTreeABSTHelper(TreeNode<char> node, char min, char max)
+        private bool IsBinaryTreeABSTHelper(BinaryTreeNode<char> node, char min, char max)
         {
             if (node.Value <= min || node.Value > max)
                 return false;
@@ -47,12 +47,12 @@ namespace Caldast.AlgoLife.Tree
             }
             return true;
         }
-        public bool IsTreeBalanced(TreeNode<char> root)
+        public bool IsTreeBalanced(BinaryTreeNode<char> root)
         {
           return CheckHeight(root) != int.MinValue;
         }
 
-        private int CheckHeight(TreeNode<char> node)
+        private int CheckHeight(BinaryTreeNode<char> node)
         {
             if (node == null)
                 return -1;
@@ -74,14 +74,14 @@ namespace Caldast.AlgoLife.Tree
 
         }
 
-        public TreeNode<char> FindCommonAncestor(TreeNode<char> root, TreeNode<char> n1, TreeNode<char> n2)
+        public BinaryTreeNode<char> FindCommonAncestor(BinaryTreeNode<char> root, BinaryTreeNode<char> n1, BinaryTreeNode<char> n2)
         {
             if (root == null)
                 return null;           
             else if (root == n1 || root == n2)
                 return root;
-            TreeNode<char> left = FindCommonAncestor(root.Left, n1, n2);
-            TreeNode<char> right = FindCommonAncestor(root.Right, n1, n2);
+            BinaryTreeNode<char> left = FindCommonAncestor(root.Left, n1, n2);
+            BinaryTreeNode<char> right = FindCommonAncestor(root.Right, n1, n2);
 
             if (left == null)
                 return right;
@@ -90,7 +90,7 @@ namespace Caldast.AlgoLife.Tree
             else return root;
 
         }
-        public List<LinkedList<int>> AllSequences(TreeNode<int> root)
+        public List<LinkedList<int>> AllSequences(BinaryTreeNode<int> root)
         {
             List<LinkedList<int>> result = new List<LinkedList<int>>();
             if (root == null)
@@ -162,7 +162,7 @@ namespace Caldast.AlgoLife.Tree
             return mergeList;
         }
 
-        public int LongestPath(TreeNode<int> node)
+        public int LongestPath(BinaryTreeNode<int> node)
         {
             int[] nodeData = new int[2];
             LongestPath(node, nodeData, 0);
@@ -171,7 +171,7 @@ namespace Caldast.AlgoLife.Tree
 
                
         // Checks for depth and node count
-        private int LongestPath(TreeNode<int> node, int [] data , int depth)
+        private int LongestPath(BinaryTreeNode<int> node, int [] data , int depth)
         {           
             if (node == null || depth > 1000 || data[1] > 10000)
             {
@@ -206,12 +206,12 @@ namespace Caldast.AlgoLife.Tree
             }
         }
 
-        public int GetSizeOfLargestCompleteSubTree(TreeNode<int> treeNode)
+        public int GetSizeOfLargestCompleteSubTree(BinaryTreeNode<int> treeNode)
         {
             return GetSizeOfLargestCompleteSubTreeUtil(treeNode).Height;
         }
 
-        private CompleteSubTreeSizeResult GetSizeOfLargestCompleteSubTreeUtil(TreeNode<int> treeNode)
+        private CompleteSubTreeSizeResult GetSizeOfLargestCompleteSubTreeUtil(BinaryTreeNode<int> treeNode)
         {
             if (treeNode == null)
                 return new CompleteSubTreeSizeResult(true, -1);

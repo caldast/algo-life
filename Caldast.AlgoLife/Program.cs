@@ -20,8 +20,6 @@ namespace Caldast.AlgoLife
 
             //DoSorting();
 
-            //DoCsharpPratice();
-
             //DoRecursion();
             // DoDynamicProgramming();
             //DoNumberProblems();
@@ -146,11 +144,7 @@ namespace Caldast.AlgoLife
             BubbleSort b = new BubbleSort();
             b.Sort(arr);
         }
-        public static void DoCsharpPratice()
-        {
-            var add = new CSharp.Delegates();
-            add.Run();
-        }
+        
 
         public static void DoRecursion()
         {
@@ -174,16 +168,18 @@ namespace Caldast.AlgoLife
         }
         public static void DoTreeProblems()
         {
+
             var treeProblems = new TreeProblems();
+            
             //var treeOperation = new TreeOperation<char>();
-            //var node = GetTreeNode();
+            //var node = GetBinaryTreeNode();
             //bool isBalanced = treeProblems.IsTreeBalanced(node);
 
             //bool isBST = treeProblems.IsBinaryTreeABST(node);
             #region FindCommonAncestor
-            //TreeNode<char> a = treeOperation.Find(node, 'A');
-            //TreeNode<char> g = treeOperation.Find(node, 'G');
-            //TreeNode<char> common = treeProblems.FindCommonAncestor(node, a, g);
+            //BinaryTreeNode<char> a = treeOperation.Find(node, 'A');
+            //BinaryTreeNode<char> g = treeOperation.Find(node, 'G');
+            //BinaryTreeNode<char> common = treeProblems.FindCommonAncestor(node, a, g);
             #endregion
 
             #region BSTSequences
@@ -339,7 +335,7 @@ namespace Caldast.AlgoLife
             //bool res = np.IsMatch("1010", "A");
             // np.MySqrt(2147395599);
 
-            uint x = 3 >> 1;
+            //uint x = 3 >> 1;
         }
 
         public static void DoDynamicProgramming()
@@ -532,7 +528,7 @@ namespace Caldast.AlgoLife
 
         public static void DoPreOrderTreeTraversal()
         {
-            var r = GetTreeNode();
+            var r = GetBinaryTreeNode();
             var preOrder = new PreOrderTraversal<char>();
             Console.WriteLine("Recursive");
             preOrder.Recursive(r);
@@ -543,7 +539,7 @@ namespace Caldast.AlgoLife
 
         public static void DoInOrderTreeTraversal()
         {
-            var r = GetTreeNode();
+            var r = GetBinaryTreeNode();
             var inOrder = new InOrderTraversal<char>();
             Console.WriteLine("Recursive");
             inOrder.Recursive(r);
@@ -553,7 +549,7 @@ namespace Caldast.AlgoLife
 
         public static void DoPostOrderTreeTraversal()
         {
-            var r = GetTreeNode();
+            var r = GetBinaryTreeNode();
             var postOrder = new PostOrderTraversal<char>();
             //Console.WriteLine("Recursive");
             //postOrder.Recursive(r);
@@ -565,9 +561,9 @@ namespace Caldast.AlgoLife
 
         public static void DoFindSuccessor()
         {
-            var r = GetTreeNode();
-            var treeOperation = new TreeOperation<char>();
-            TreeNode<char> successor = treeOperation.FindSuccessor(r, 'B');
+            var r = GetBinaryTreeNode();
+            var treeOperation = new BSTOperation<char>();
+            BinaryTreeNode<char> successor = treeOperation.FindSuccessor(r, 'B');
             Console.WriteLine($"Successor = {successor.Value} For 'B'");
 
             successor = treeOperation.FindSuccessor(r, 'E');
@@ -587,10 +583,10 @@ namespace Caldast.AlgoLife
 
         public static void DoFindPredecessor()
         {
-            var r = GetTreeNode();
-            var treeOperation = new TreeOperation<char>();
+            var r = GetBinaryTreeNode();
+            var treeOperation = new BSTOperation<char>();
 
-            TreeNode<char> predeccessor = treeOperation.FindPredecessor(r, 'B');
+            BinaryTreeNode<char> predeccessor = treeOperation.FindPredecessor(r, 'B');
             Console.WriteLine($"Predeccessor = {predeccessor.Value} For 'B'");
 
             predeccessor = treeOperation.FindPredecessor(r, 'E');
@@ -610,9 +606,9 @@ namespace Caldast.AlgoLife
 
         public static void DoDeleteNode()
         {
-            var r = GetTreeNode();
+            var r = GetBinaryTreeNode();
 
-            var treeOperation = new TreeOperation<char>();
+            var treeOperation = new BSTOperation<char>();
 
             treeOperation.Delete(r, 'F');
 
@@ -696,25 +692,25 @@ namespace Caldast.AlgoLife
             return root;
         }
 
-        private static TreeNode<int> GetIntTreeNode()
+        private static BinaryTreeNode<int> GetIntTreeNode()
         {
 
-            var _1 = new TreeNode<int>(1)
+            var _1 = new BinaryTreeNode<int>(1)
             {
-                Left = new TreeNode<int>(2)
+                Left = new BinaryTreeNode<int>(2)
                 {
-                    Left = new TreeNode<int>(4)
+                    Left = new BinaryTreeNode<int>(4)
                     {
-                        Left = new TreeNode<int>(8)
+                        Left = new BinaryTreeNode<int>(8)
                         {
-                            Left = new TreeNode<int>(10)
+                            Left = new BinaryTreeNode<int>(10)
                         },
-                        Right = new TreeNode<int>(9)
+                        Right = new BinaryTreeNode<int>(9)
                     },
-                    Right = new TreeNode<int>(5)
+                    Right = new BinaryTreeNode<int>(5)
                 },
 
-                Right = new TreeNode<int>(3)
+                Right = new BinaryTreeNode<int>(3)
                
             };
 
@@ -722,53 +718,53 @@ namespace Caldast.AlgoLife
 
         }
 
-        private static TreeNode<char> GetTreeNode()
+        private static BinaryTreeNode<char> GetBinaryTreeNode()
         {
-            var r = new TreeNode<char>('F');
-            var b = new TreeNode<char>('B');
-            b.Left = new TreeNode<char>('A');
-            var d = new TreeNode<char>('D');
-            var c = new TreeNode<char>('C');
+            var r = new BinaryTreeNode<char>('F');
+            var b = new BinaryTreeNode<char>('B');
+            b.Left = new BinaryTreeNode<char>('A');
+            var d = new BinaryTreeNode<char>('D');
+            var c = new BinaryTreeNode<char>('C');
             d.Left = c;
-            var e = new TreeNode<char>('E');            
+            var e = new BinaryTreeNode<char>('E');            
             d.Right = e;
 
             b.Right = d;
             r.Left = b;
 
-            var g = new TreeNode<char>('G');
+            var g = new BinaryTreeNode<char>('G');
 
-            var i = new TreeNode<char>('I');
+            var i = new BinaryTreeNode<char>('I');
             //i.Left = h
 
-            //var j = new TreeNode<char>('J');
-            //var k = new TreeNode<char>('K');
+            //var j = new BinaryTreeNode<char>('J');
+            //var k = new BinaryTreeNode<char>('K');
 
-            //var l = new TreeNode<char>('L');
+            //var l = new BinaryTreeNode<char>('L');
             //j.Right = l;
-            //var m = new TreeNode<char>('M');
+            //var m = new BinaryTreeNode<char>('M');
             //l.Right = m;
             //j.Left = k;
             //i.Right = j;
 
-            var h = new TreeNode<char>('H');
+            var h = new BinaryTreeNode<char>('H');
             h.Right = i;
             h.Left = g;
             r.Right = h;
             return r;
         }
 
-        private static TreeNode<int> GetTreeNodeToFlatten()
+        private static BinaryTreeNode<int> GetBinaryTreeNodeToFlatten()
         {
-            var root = new TreeNode<int>(1);
+            var root = new BinaryTreeNode<int>(1);
 
-            var rl = new TreeNode<int>(2);
-            rl.Left = new TreeNode<int>(3);
-            rl.Right = new TreeNode<int>(4);
+            var rl = new BinaryTreeNode<int>(2);
+            rl.Left = new BinaryTreeNode<int>(3);
+            rl.Right = new BinaryTreeNode<int>(4);
             root.Left = rl;
 
-            var rr = new TreeNode<int>(5);
-            rr.Right = new TreeNode<int>(6);
+            var rr = new BinaryTreeNode<int>(5);
+            rr.Right = new BinaryTreeNode<int>(6);
             root.Right = rr;
 
             return root;

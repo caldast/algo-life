@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caldast.AlgoLife.Tree;
+using System;
 using System.Collections.Generic;
 
 namespace Caldast.AlgoLife
@@ -6,7 +7,7 @@ namespace Caldast.AlgoLife
     class PreOrderTraversal<T>
     {
 
-        public void Recursive(TreeNode<T> node)
+        public void Recursive(BinaryTreeNode<T> node)
         {
             if (node == null)
                 return;
@@ -15,10 +16,10 @@ namespace Caldast.AlgoLife
             Recursive(node.Right);
         }
 
-        public void Iterative(TreeNode<T> node)
+        public void Iterative(BinaryTreeNode<T> node)
         {
-            var s = new Stack<TreeNode<T>>();
-            TreeNode<T> current = node;
+            var s = new Stack<BinaryTreeNode<T>>();
+            BinaryTreeNode<T> current = node;
             while (true)
             {
                 while (current != null)
@@ -31,27 +32,13 @@ namespace Caldast.AlgoLife
                 if (s.Count == 0)
                     break;
 
-                TreeNode<T> p = s.Pop();
+                BinaryTreeNode<T> p = s.Pop();
                 current = p.Right;
             }
         }
     }
        
-    public class TreeNode<T>
-    {
-        public TreeNode(T value)
-        {
-            Value = value;
-        }
-        public T Value { get; set; }
-        public TreeNode<T> Left { get; set; }
-        public TreeNode<T> Right { get; set; }
-
-        public override string ToString()
-        {
-            return Value?.ToString();
-        }
-    }
+ 
 
 
 }

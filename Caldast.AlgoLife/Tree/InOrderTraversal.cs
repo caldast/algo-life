@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Caldast.AlgoLife.Tree;
+using System;
 using System.Collections.Generic;
 
 namespace Caldast.AlgoLife
 {
     class InOrderTraversal<T>
     {
-        public void Iterative(TreeNode<T> treeNode)
+        public void Iterative(BinaryTreeNode<T> treeNode)
         {
-            var stack = new Stack<TreeNode<T>>();
-            TreeNode<T> current = treeNode;
+            var stack = new Stack<BinaryTreeNode<T>>();
+            BinaryTreeNode<T> current = treeNode;
 
             while (true)
             {
@@ -21,14 +22,14 @@ namespace Caldast.AlgoLife
                 if (stack.Count == 0)
                     break;
 
-                TreeNode<T> p = stack.Pop();
+                BinaryTreeNode<T> p = stack.Pop();
                 Console.WriteLine(p.Value);
                 current = p.Right;
             }
 
         }
 
-        public void Recursive(TreeNode<T> treeNode)
+        public void Recursive(BinaryTreeNode<T> treeNode)
         {
             if (treeNode == null)
                 return;
