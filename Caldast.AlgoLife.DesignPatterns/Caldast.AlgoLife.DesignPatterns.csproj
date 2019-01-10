@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{291091DD-0972-4F46-9D15-429538A1E33C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Caldast.AlgoLife.DesignPatterns</RootNamespace>
+    <AssemblyName>Caldast.AlgoLife.DesignPatterns</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuilderPattern\ConcreteHouseBuilder.cs" />
+    <Compile Include="BuilderPattern\EngineerDirector.cs" />
+    <Compile Include="BuilderPattern\IHouseBuilder.cs" />
+    <Compile Include="BuilderPattern\HouseProduct.cs" />
+    <Compile Include="BuilderPattern\TreeHouseBuilder.cs" />
+    <Compile Include="CommandPattern\Command\GarageOffCommand.cs" />
+    <Compile Include="CommandPattern\Command\LightOffCommand.cs" />
+    <Compile Include="CommandPattern\Command\NoCommand.cs" />
+    <Compile Include="CommandPattern\Receiver\Garage.cs" />
+    <Compile Include="CommandPattern\Command\GarageOnCommand.cs" />
+    <Compile Include="CommandPattern\ICommand.cs" />
+    <Compile Include="CommandPattern\Receiver\Light.cs" />
+    <Compile Include="CommandPattern\Command\LightOnCommand.cs" />
+    <Compile Include="CommandPattern\RemoteControl.cs" />
+    <Compile Include="CompositePattern\CMenu.cs" />
+    <Compile Include="CompositePattern\CMenuComponent.cs" />
+    <Compile Include="CompositePattern\CMenuItem.cs" />
+    <Compile Include="CompositePattern\CWaiter.cs" />
+    <Compile Include="MVC\AirplaneFlightController.cs" />
+    <Compile Include="MVC\AirplaneFlightLocationObserver.cs" />
+    <Compile Include="MVC\AirplaneFlightModel.cs" />
+    <Compile Include="MVC\AirplaneFlightSpeedObserver.cs" />
+    <Compile Include="MVC\AirplaneFlightView.cs" />
+    <Compile Include="MVC\IFlightController.cs" />
+    <Compile Include="MVC\IFlightModel.cs" />
+    <Compile Include="MVC\IFlightView.cs" />
+    <Compile Include="MVC\ILocationObserver.cs" />
+    <Compile Include="MVC\ISpeedObserver.cs" />
+    <Compile Include="ObserverPattern\CurrentConditionsDisplay.cs" />
+    <Compile Include="ObserverPattern\IDisplay.cs" />
+    <Compile Include="ObserverPattern\IWeather.cs" />
+    <Compile Include="ObserverPattern\IWeatherObserver.cs" />
+    <Compile Include="ObserverPattern\SimpleForecastDisplay.cs" />
+    <Compile Include="ObserverPattern\WeatherData.cs" />
+    <Compile Include="ObserverPattern\WeatherStatisticsDisplay.cs" />
+    <Compile Include="IteratorPattern\BreakfastMenu.cs" />
+    <Compile Include="IteratorPattern\BreakfastMenuIterator.cs" />
+    <Compile Include="IteratorPattern\DinnerMenu.cs" />
+    <Compile Include="IteratorPattern\DinnerMenuIterator.cs" />
+    <Compile Include="IteratorPattern\IIterator.cs" />
+    <Compile Include="IteratorPattern\IMenu.cs" />
+    <Compile Include="IteratorPattern\MenuItem.cs" />
+    <Compile Include="IteratorPattern\Waiter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitorPattern\Clerk.cs" />
+    <Compile Include="VisitorPattern\Employees.cs" />
+    <Compile Include="VisitorPattern\IEmployee.cs" />
+    <Compile Include="VisitorPattern\IEmployeeVisitor.cs" />
+    <Compile Include="VisitorPattern\IncomeVisitor.cs" />
+    <Compile Include="VisitorPattern\Manager.cs" />
+    <Compile Include="VisitorPattern\VacationVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
