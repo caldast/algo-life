@@ -124,10 +124,7 @@ namespace Caldast.AlgoLife
 
         }
 
-        public void DoStackProbs()
-        {
-           
-        }
+       
         public static void DoBitManipulation()
         {   
             var b = new BitManipulation.BitManipulation();

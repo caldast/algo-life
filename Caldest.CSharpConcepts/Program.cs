@@ -8,7 +8,7 @@ namespace Caldest.CSharpConcepts
         static void Main(string[] args)
         {
             var linqToObj = new LinqToObject();
-            linqToObj.RemoveOddAndGroupByStateAndByCity();
+            linqToObj.GroupByAdvanced();
 
             var linqToSql = new LinqToSqlRepo();
             linqToSql.PrintAllCoursesAndAssociatedTeacher();
