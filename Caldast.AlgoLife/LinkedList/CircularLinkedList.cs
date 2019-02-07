@@ -4,7 +4,8 @@ namespace Caldast.AlgoLife.LinkedList
 {
     class CircularLinkedList
     {
-        public CircularLinkedListNode Head { get; set; }
+        public CircularLinkedListNode Head { get; private set; }
+
         public class CircularLinkedListNode 
         {             
             public CircularLinkedListNode Next;

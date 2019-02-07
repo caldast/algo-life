@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Caldast.AlgoLife
 {
-    class QuickSort
+   public class QuickSort
     {
         public static void SortRecursive(int[] a, int p, int r)
         {

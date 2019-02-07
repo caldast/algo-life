@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace Caldast.AlgoLife.LinkedList
 {
@@ -7,14 +8,14 @@ namespace Caldast.AlgoLife.LinkedList
         public SinglyLinkedList()
         {
         }
-            public SinglyLinkedList(SinglyLinkedListNode<T> root)
+        public SinglyLinkedList(SinglyLinkedListNode<T> root)
         {
             Root = root;
         }
 
-        public SinglyLinkedListNode<T> Root { get; set; }
+        public SinglyLinkedListNode<T> Root { get; private set; }
 
-        public SinglyLinkedListNode<T> Last { get; set; }
+        public SinglyLinkedListNode<T> Last { get; private set; }
 
         public void AddFirst(SinglyLinkedListNode<T> n)
         {
@@ -38,6 +39,45 @@ namespace Caldast.AlgoLife.LinkedList
             }
             Last.Next = n;
             Last = n;
+        }
+
+        public void Remove(T value)
+        {
+            if (Root == null)
+                return;
+
+            SinglyLinkedListNode<T> current = Root;
+            if (Root.Value.Equals(value))
+            {
+                Root = Root.Next;
+                current.Next = null;
+                return;
+            }
+
+            SinglyLinkedListNode<T> prev = current;
+
+            current = current.Next;
+            while (current != null)
+            {
+                if (current.Value.Equals(value))
+                {
+                    break;
+                }
+
+                prev = current;
+                current = current.Next;
+            }
+
+            if (current != null)
+            {
+                if (Last.Equals(current))
+                {
+                    Last = prev;
+                }
+
+                prev.Next = current.Next;
+            }
+
         }
 
         public int Count()

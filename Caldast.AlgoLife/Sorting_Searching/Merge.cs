@@ -1,74 +1,57 @@
-﻿namespace Caldast.AlgoLife
+﻿using System;
+using System.Security.Cryptography;
+
+namespace Caldast.AlgoLife
 {
-    class MergeSort
+    public class MergeSort
     {
 
-        public void Sort(int[] a, int leftStart, int rightEnd) {
-            if (leftStart < rightEnd) {
-                int mid = (leftStart + rightEnd) / 2;
-                Sort(a, leftStart, mid);
-                Sort(a, mid + 1, rightEnd);
-                Merge(a, leftStart, mid, rightEnd);
+        public void Sort(int[] A, int start, int end)
+        {
+            if (start < end)
+            {
+                int m = start + (end - start) / 2;
+                Sort(A, start, m);
+                Sort(A, m + 1, end);
+                Merge(A, start, m, end);
             }
         }
 
-        public void Merge(int [] a, int leftStart, int mid, int rightEnd) {
-           
-            int sizeOfLeftArray = mid - leftStart + 1;
-            int sizeOfRightArray = rightEnd - mid;
-
-            int[] leftArray = new int[sizeOfLeftArray];
-            int[] rightArray = new int[sizeOfRightArray];
+        private void Merge(int[] A, int start, int mid, int end)
+        {
+            int left = mid - start + 1;
+            int right = end - mid;
+            int []leftArr = new int[left+1];
+            int [] rightArr = new int[right+1];
 
             int i = 0;
             int j = 0;
-            for (i = 0; i < sizeOfLeftArray; i++) {
-                leftArray[i] = a[leftStart + i];
-            }
-            for (j = 0; j < sizeOfRightArray; j++)
+            for (i = 0; i < left; i++)
             {
-                rightArray[j] = a[mid + 1+j];
+                leftArr[i] = A[start + i];
             }
-            //leftArray[sizeOfLeftArray] = int.MaxValue;
-            //rightArray[sizeOfRightArray] = int.MaxValue;
+            for (j = 0; j < right; j++)
+            {
+                rightArr[j] = A[mid + j+1];
+            }
 
+            leftArr[left] = int.MaxValue;
+            rightArr[right] = int.MaxValue;
             i = 0;
             j = 0;
-            for (int k=leftStart; k < rightEnd+1; k++)
+            for (int k = start; k <= end; k++)
             {
-                if (i == sizeOfLeftArray)
-                {
-                    while (j < sizeOfRightArray)
-                    {
-                        a[k] = rightArray[j];
-                        j++;
-                        k++;
-                    }
-                    break;
-                }
-                else if (j == sizeOfRightArray)
-                {
-                    while (i < sizeOfLeftArray)
-                    {
-                        a[k] = leftArray[i];
-                        i++;
-                        k++;
-                    }
-                    break;
-                }
-                if (leftArray[i] <= rightArray[j])
-                {
-                    a[k] = leftArray[i];
-                    i++;
-                }
-                else {
-                    a[k] = rightArray[j];
-                    j++;
-                }
                 
+                if (leftArr[i] <= rightArr[j])
+                    A[k] = leftArr[i++];
+                else
+                    A[k] = rightArr[j++];
+               
+
             }
-
         }
-
     }
 }
+
+
+

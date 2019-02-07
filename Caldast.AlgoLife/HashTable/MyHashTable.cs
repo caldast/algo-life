@@ -21,14 +21,14 @@ namespace Caldast.AlgoLife
         {
             int hashCode = GetHashCode(key);
             LinkedListNode node = _arr[hashCode];
-            var newList = new LinkedListNode(key, value);
+            var newNode = new LinkedListNode(key, value);
             if (node != null)
             {
-                newList.Next = node;
-                node.Previous = newList;
+                newNode.Next = node;
+                node.Previous = newNode;
             }
             
-            _arr[hashCode] = newList;
+            _arr[hashCode] = newNode;
         }
         public void Remove(K key)
         {

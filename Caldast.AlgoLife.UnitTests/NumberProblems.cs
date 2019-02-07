@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace UnitTestProject1
+
+namespace Caldast.AlgoLife.UnitTests
 {
     [TestClass]
     public class NumberProblems

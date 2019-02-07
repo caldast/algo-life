@@ -13,18 +13,19 @@ using Caldast.AlgoLife.Recursion;
 namespace Caldast.AlgoLife
 {
     public class Program
-    {
+    {      
         static void Main(string[] args)
         {
+            //DoNumberProblems();
             //DoBitManipulation();
 
             //DoSorting();
 
             //DoRecursion();
-            // DoDynamicProgramming();
+            DoDynamicProgramming();
             //DoNumberProblems();
             //DoStringOperations();
-           
+
 
             //DoArrayProblems();
             //DoLinkedList();
@@ -81,8 +82,6 @@ namespace Caldast.AlgoLife
             // isFound = tries.Delete("abc");
 
             // isFound = tries.Delete("stop");
-
-
         }
         
         public static void DoLinkedList()
@@ -94,14 +93,17 @@ namespace Caldast.AlgoLife
 
             //var probs = new LinkedListProblems();
 
-            //var singlyLinkedList = new SinglyLinkedList<int>();
+            var singlyLinkedList = new SinglyLinkedList<int>();
 
-            //int[] arr = { 0,1,2 };
+            int[] arr = { 0, 1, 2,3,4 };
 
-            //Array.ForEach(arr, i =>
-            //            singlyLinkedList.AddLast(new SinglyLinkedListNode<int>(i)));
+            Array.ForEach(arr, i =>
+                        singlyLinkedList.AddLast(new SinglyLinkedListNode<int>(i)));
 
+           
+            singlyLinkedList.Print();
 
+         
             //SinglyLinkedListNode<int> node = probs.EvenOddMerge(singlyLinkedList.Root);
 
 
@@ -332,19 +334,44 @@ namespace Caldast.AlgoLife
             //bool res = np.IsMatch("1010", "A");
             // np.MySqrt(2147395599);
 
-            //uint x = 3 >> 1;
+            int[] arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8, -10};
+            int n = arr.Length;
+
+            Console.WriteLine("Given array is ");
+            printArray(arr, n);
+
+            np.Rearrange(arr, n);
+
+            Console.WriteLine("RearrangeD array is ");
+            printArray(arr, n);
+
+
+        }
+
+        static void printArray(int[] arr, int n)
+        {
+            for (int i = 0; i < n; i++)
+                Console.Write(arr[i] + " ");
+            Console.WriteLine("");
         }
 
         public static void DoDynamicProgramming()
         {
             //var dp = new CutRod();
-            //int val = dp.Recursive(new int[] { 0, 1, 5, 8 }, 4);
+            //int val = dp.FindMaxPriceRecursive(new int[] { 0, 1, 5, 8 }, 4);
 
-            var lis = new LongestIncreasingSubsequence();
-            var seq = new int[] {0,4,12,2,10,6,9,3,11,7};
-            //int len = lis.LisRecursive(seq);
+            int[] prices = new int[] {1,4,5,7 };
+            int[] weight = new int[] { 1,3,4,5};
+            int capacity = 7;
 
-            LinkedList<int> longestSeq = lis.Iterative(seq);
+            var knp = new KnapSack();
+            int max = knp.KnapsackBottomUpDp(weight, prices, capacity);
+
+            //var lis = new LongestIncreasingSubsequence();
+            //var seq = new int[] {0,4,12,2,10,6,9,3,11,7};
+            ////int len = lis.LisRecursive(seq);
+
+            //LinkedList<int> longestSeq = lis.Iterative(seq);
         }
 
         public static void DoPermutation()
@@ -527,7 +554,7 @@ namespace Caldast.AlgoLife
         {
             var r = GetBinaryTreeNode();
             var preOrder = new PreOrderTraversal<char>();
-            Console.WriteLine("Recursive");
+            Console.WriteLine("FindMaxPriceRecursive");
             preOrder.Recursive(r);
             Console.WriteLine("Iterative");
             preOrder.Iterative(r);
@@ -538,7 +565,7 @@ namespace Caldast.AlgoLife
         {
             var r = GetBinaryTreeNode();
             var inOrder = new InOrderTraversal<char>();
-            Console.WriteLine("Recursive");
+            Console.WriteLine("FindMaxPriceRecursive");
             inOrder.Recursive(r);
             Console.WriteLine("Iterative");
             inOrder.Iterative(r);
@@ -548,8 +575,8 @@ namespace Caldast.AlgoLife
         {
             var r = GetBinaryTreeNode();
             var postOrder = new PostOrderTraversal<char>();
-            //Console.WriteLine("Recursive");
-            //postOrder.Recursive(r);
+            //Console.WriteLine("FindMaxPriceRecursive");
+            //postOrder.FindMaxPriceRecursive(r);
             //Console.WriteLine("Iterative using One Stack");
             //postOrder.IterativeUsingOneStack(r);
             Console.WriteLine("Iterative using Two Stacks");

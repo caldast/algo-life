@@ -1,8 +1,8 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Caldast.AlgoLife.Arrays;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace Caldast.AlgoLife.UnitTests
 {
     [TestClass]
     public class ArrayProblemsTest

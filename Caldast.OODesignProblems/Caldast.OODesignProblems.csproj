@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{859C7E9B-0F9A-4751-820F-6359F3FF315F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Caldast.OODesignProblems</RootNamespace>
+    <AssemblyName>Caldast.OODesignProblems</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ParkingLot\Controller\EntranceController.cs" />
+    <Compile Include="ParkingLot\Entrance.cs" />
+    <Compile Include="ParkingLot\Enums\AccountStatus.cs" />
+    <Compile Include="ParkingLot\Enums\UserType.cs" />
+    <Compile Include="ParkingLot\Enums\VehicleSize.cs" />
+    <Compile Include="ParkingLot\Exit.cs" />
+    <Compile Include="ParkingLot\ParkingLot.cs" />
+    <Compile Include="ParkingLot\ParkingSpot\ParkingSpot.cs" />
+    <Compile Include="ParkingLot\ParkingSpot\ParkingSpotSize.cs" />
+    <Compile Include="ParkingLot\ParkingSpot\ParkingSpotType.cs" />
+    <Compile Include="ParkingLot\ParkingSpot\DisabledParkingSpotType.cs" />
+    <Compile Include="ParkingLot\ParkingSpot\RegularParkingSpotType.cs" />
+    <Compile Include="ParkingLot\Rate.cs" />
+    <Compile Include="ParkingLot\Repository\AccountRepository.cs" />
+    <Compile Include="ParkingLot\Repository\AvailabilityRepository.cs" />
+    <Compile Include="ParkingLot\Repository\EntranceRepository.cs" />
+    <Compile Include="ParkingLot\Repository\ExitRepository.cs" />
+    <Compile Include="ParkingLot\Repository\ParkingLotRepository.cs" />
+    <Compile Include="ParkingLot\Repository\TicketRepository.cs" />
+    <Compile Include="ParkingLot\Service\AccountService.cs" />
+    <Compile Include="ParkingLot\Service\EntranceService.cs" />
+    <Compile Include="ParkingLot\Service\TicketService.cs" />
+    <Compile Include="ParkingLot\Ticket.cs" />
+    <Compile Include="ParkingLot\Users\Account.cs" />
+    <Compile Include="ParkingLot\Users\Admin.cs" />
+    <Compile Include="ParkingLot\Users\Customer.cs" />
+    <Compile Include="ParkingLot\Users\ParkingAttendant.cs" />
+    <Compile Include="ParkingLot\Vehicle\Bus.cs" />
+    <Compile Include="ParkingLot\Vehicle\Car.cs" />
+    <Compile Include="ParkingLot\Vehicle\MotorCycle.cs" />
+    <Compile Include="ParkingLot\Vehicle\Vehicle.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

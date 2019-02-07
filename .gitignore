@@ -9,3 +9,12 @@
 /Caldast.AlgoLife.UnitTests/obj
 /packages
 /.vs/Caldast.AlgoLife/v15/.suo
+/.vs/Caldast.AlgoLife
+/.vs
+/Caldast.AlgoLife.DesignPatterns/bin/Debug
+/Caldast.AlgoLife.DesignPatterns/obj/Debug
+/Caldast.OODesignProblems/bin/Debug
+/Caldast.OODesignProblems/obj/Debug
+/Caldest.CSharpConcepts
+/Caldast.AlgoLife.DesignPatterns/obj/Release
+/Caldast.OODesignProblems/Program.cs

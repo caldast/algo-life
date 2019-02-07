@@ -1,11 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Text;
 
 namespace Caldast.AlgoLife.Number
 {
     public class NumberProblems
     {
+
+        public bool CanFindZero(int[] arr, int startIndex, int searchValue)
+        {
+            if (arr == null || arr.Length == 0)
+                return false;
+
+            int [] memo = new int[arr.Length];
+
+            Initialize(memo);
+
+            return CanFindZeroUtil(arr, 0, memo);
+        }
+
+        private void Initialize(int[] memo)
+        {
+            int i = 0;
+            while (i < memo.Length)
+            {
+                memo[i] = -1;
+                i++;
+            }
+        }
+
+        private bool CanFindZeroUtil(int[] arr, int startIndex, int [] memo)
+        {
+            if (startIndex < 0 || startIndex >= arr.Length)
+                return false;
+
+            if (arr[startIndex] == 0)
+                return true;
+
+            // if searchValue is true in the index, no need to check further
+            if (memo[startIndex] !=- 1)
+                return arr[startIndex] == 1;
+
+            int next = arr[startIndex];
+
+            // check right to see if we find zer
+            bool right = CanFindZeroUtil(arr, startIndex + next, memo);
+
+            memo[startIndex] = right ? 1 : 0;
+
+            if (right) return true;
+
+            bool left = CanFindZeroUtil(arr, startIndex - next, memo);
+
+            // check if left side is true 
+            if (memo[startIndex] == -1 || memo[startIndex] == 0)
+            {
+                memo[startIndex] = left? 1:0;
+            }
+
+            return left || right;
+        }
+
+
+        private void Rightrotate(int[] arr, int n,
+            int outofplace, int cur)
+        {
+            int tmp = arr[cur];
+            for (int i = cur; i > outofplace; i--)
+                arr[i] = arr[i - 1];
+            arr[outofplace] = tmp;
+        }
+
+        public void Rearrange(int[] arr, int n)
+        {
+            int outofplace = -1;
+
+            for (int index = 0; index < n; index++)
+            {
+                if (outofplace >= 0)
+                {
+
+                    if (((arr[index] >= 0) &&
+                         (arr[outofplace] < 0)) ||
+                        ((arr[index] < 0) &&
+                         (arr[outofplace] >= 0)))
+                    {
+                        Rightrotate(arr, n, outofplace, index);
+
+                        if (index - outofplace >= 2)
+                            outofplace = outofplace + 2;
+                        else
+                            outofplace = -1;
+                    }
+                }
+
+                if (outofplace == -1)
+                {
+                    if (((arr[index] >= 0) &&
+                         ((index & 0x01) == 0)) ||
+                        ((arr[index] < 0) &&
+                         (index & 0x01) == 1))
+                        outofplace = index;
+                }
+            }
+        }
+
         public int MySqrt(int x)
         {
 
@@ -20,16 +120,16 @@ namespace Caldast.AlgoLife.Number
                 if (mid == x / mid)
                     return mid;
 
-                else if (mid < x/mid)
+                else if (mid < x / mid)
                 {
                     res = mid;
                     low = mid + 1;
                 }
                 else
                 {
-                    high = mid - 1; 
+                    high = mid - 1;
                 }
-                
+
 
             }
             return res;
@@ -42,22 +142,22 @@ namespace Caldast.AlgoLife.Number
             int partial = 0;
             int i = 0;
 
-            while(i < len)
+            while (i < len)
             {
                 int cur = FindValue(s[i]);
                 if (cur == 0)
-                    throw new Exception("Invalid");              
+                    throw new Exception("Invalid");
 
                 int next = 0;
                 if (i + 1 < len)
                 {
-                    next = FindValue(s[i+1]);
+                    next = FindValue(s[i + 1]);
                     if (next == 0)
                         throw new Exception("Invalid");
 
 
                 }
-               
+
                 if (cur < next)
                 {
                     if (next == cur * 5 || next == cur * 10)
@@ -72,16 +172,16 @@ namespace Caldast.AlgoLife.Number
                 }
                 else
                 {
-                    partial = cur;                 
+                    partial = cur;
                     i = i + 1;
                 }
                 result += partial;
 
-                if (prev!=0 && prev < partial)
+                if (prev != 0 && prev < partial)
                     throw new Exception("Invalid");
 
                 prev = partial;
-             
+
             }
             return result;
 
@@ -183,17 +283,17 @@ namespace Caldast.AlgoLife.Number
                 if (n >= 100)
                 {
                     list.AddLast(ZeroToNine[n / 100]);
-                    list.AddLast("Hundred");                  
+                    list.AddLast("Hundred");
                     n = n % 100;
                 }
 
                 if (n > 9 && n < 20)
                 {
-                    list.AddLast(TenToNineTeen[n % 10]);                                    
+                    list.AddLast(TenToNineTeen[n % 10]);
                 }
                 else if (n >= 20)
                 {
-                    list.AddLast(Tens[n / 10]);                   
+                    list.AddLast(Tens[n / 10]);
                     n = n % 10;
                 }
                 if (n > 0 && n < 10)
@@ -287,8 +387,8 @@ namespace Caldast.AlgoLife.Number
                 throw new ArgumentException("cannot be null or empty");
             }
 
-            int sum = (n * (n + 1)) / 2;   
-                       
+            int sum = (n * (n + 1)) / 2;
+
             int first = a[0];
             for (int i = 1; i < a.Length; i++)
             {
@@ -317,7 +417,7 @@ namespace Caldast.AlgoLife.Number
 
             for (int i = len - 1; i >= 0; i--)
             {
-                result += CharLookup(input[i]) * (int) Math.Pow(b, len - 1 - i);
+                result += CharLookup(input[i]) * (int)Math.Pow(b, len - 1 - i);
             }
             return result;
         }
@@ -345,7 +445,7 @@ namespace Caldast.AlgoLife.Number
                 case 'f':
                     return 15;
                 default:
-                    return (int) c-'0';
+                    return (int)c - '0';
             }
         }
     }

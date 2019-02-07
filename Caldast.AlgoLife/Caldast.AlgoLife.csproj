@@ -47,6 +47,7 @@
     <Compile Include="Arrays\ArrayProblems.cs" />
     <Compile Include="Arrays\Permutation.cs" />
     <Compile Include="Arrays\StringOperations.cs" />
+    <Compile Include="DynamicProgramming\KnapSack.cs" />
     <Compile Include="Sorting_Searching\BinarySearch.cs" />
     <Compile Include="Bit Manipulation\BitManipulation.cs" />
     <Compile Include="DynamicProgramming\CutRod.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="LinkedList\XorLinkedList.cs" />
     <Compile Include="Number\NumberProblems.cs" />
     <Compile Include="Recursion\CoinGame.cs" />
+    <Compile Include="Sorting_Searching\SelectionSort.cs" />
     <Compile Include="Tree\BinaryTree.cs" />
     <Compile Include="Tree\BinaryTreeNode.cs" />
     <Compile Include="Tree\BSTOperation.cs" />

@@ -1,20 +1,19 @@
-﻿using Caldast.AlgoLife.Graph.Prim_sAlgorithm;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using static Caldast.AlgoLife.Graph.Prim_sAlgorithm.PrimsMST;
+using Caldast.AlgoLife.Graph.Prim_sAlgorithm;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace Caldast.AlgoLife.UnitTests
 {
     [TestClass]
     public class GraphUnitTests
     {
-        Graph graph = null;
-        MinHeapDict minHeapDict = null;
+        PrimsMST.Graph graph = null;
+        PrimsMST.MinHeapDict minHeapDict = null;
         [TestInitialize]
         public void Initalize()
         {
-            graph = new Graph(false);
+            graph = new PrimsMST.Graph(false);
             graph.AddEdge(1, 2, 5);
             graph.AddEdge(1, 3, 6);
             graph.AddEdge(2, 4, 3);
@@ -26,17 +25,17 @@ namespace UnitTestProject1
             graph.AddEdge(4, 6, 1);
             graph.AddEdge(5, 6, 4);
 
-            minHeapDict = new MinHeapDict();
+            minHeapDict = new PrimsMST.MinHeapDict();
         }
 
         [TestMethod]
         public void Vertices_Values_Must_Be()
         {
-            var expected = new LinkedList<Graph.Vertex>();
+            var expected = new LinkedList<PrimsMST.Graph.Vertex>();
             for (int i = 1; i <= 6; i++)
-                expected.AddLast(new Graph.Vertex(i));
+                expected.AddLast(new PrimsMST.Graph.Vertex(i));
 
-            LinkedList<Graph.Vertex> actual = graph.GetVertices();
+            LinkedList<PrimsMST.Graph.Vertex> actual = graph.GetVertices();
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -60,14 +59,14 @@ namespace UnitTestProject1
         [TestMethod]
         public void Min_Heap_Should_Give_Min()
         {
-            LinkedList<Graph.Vertex> vertices = graph.GetVertices();
+            LinkedList<PrimsMST.Graph.Vertex> vertices = graph.GetVertices();
 
-            foreach (Graph.Vertex vertex in vertices)
+            foreach (PrimsMST.Graph.Vertex vertex in vertices)
             {
                 minHeapDict.Add(vertex, int.MaxValue);
             }
 
-            Graph.Vertex first = vertices.First();
+            PrimsMST.Graph.Vertex first = vertices.First();
             minHeapDict.DecreaseKey(first, 0);
 
             Assert.AreEqual(minHeapDict.Min(), first);
@@ -76,16 +75,16 @@ namespace UnitTestProject1
         [TestMethod]
         public void Extract_Heap_Should_Give_Min()
         {
-            LinkedList<Graph.Vertex> vertices = graph.GetVertices();
+            LinkedList<PrimsMST.Graph.Vertex> vertices = graph.GetVertices();
 
-            foreach (Graph.Vertex vertex in vertices)
+            foreach (PrimsMST.Graph.Vertex vertex in vertices)
             {
                 minHeapDict.Add(vertex, int.MaxValue);
             }
 
-            Graph.Vertex expected = vertices.First();
+            PrimsMST.Graph.Vertex expected = vertices.First();
 
-            Graph.Vertex actual = minHeapDict.ExtractMin();
+            PrimsMST.Graph.Vertex actual = minHeapDict.ExtractMin();
 
             Assert.AreEqual(expected, actual);
 
@@ -94,7 +93,7 @@ namespace UnitTestProject1
         public void Find_MST_Should_Give_MST()
         {
             var primsMST = new PrimsMST();
-            List<Graph.Edge> mst = primsMST.FindMST(graph);
+            List<PrimsMST.Graph.Edge> mst = primsMST.FindMST(graph);
             Assert.Inconclusive();
         }
     }

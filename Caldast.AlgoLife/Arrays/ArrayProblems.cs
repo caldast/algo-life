@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Caldast.AlgoLife.Arrays
 {
-    class ArrayProblems
+    public class ArrayProblems
     {
         internal static void PrintAllSolutionsToEquation()
         {

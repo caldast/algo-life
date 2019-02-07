@@ -6,6 +6,7 @@ namespace Caldast.AlgoLife.Tree
 {
     class TreeProblems
     {
+
         public void Flatten(BinaryTreeNode<int> root)
         {
             BinaryTreeNode<int> current = root;
