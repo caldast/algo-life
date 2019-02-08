@@ -360,12 +360,7 @@ namespace Caldast.AlgoLife
             //var dp = new CutRod();
             //int val = dp.FindMaxPriceRecursive(new int[] { 0, 1, 5, 8 }, 4);
 
-            int[] prices = new int[] {1,4,5,7 };
-            int[] weight = new int[] { 1,3,4,5};
-            int capacity = 7;
-
-            var knp = new KnapSack();
-            int max = knp.KnapsackBottomUpDp(weight, prices, capacity);
+           
 
             //var lis = new LongestIncreasingSubsequence();
             //var seq = new int[] {0,4,12,2,10,6,9,3,11,7};

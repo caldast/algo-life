@@ -14,8 +14,9 @@ namespace Caldast.AlgoLife.UnitTests.DynamicProgramming
             int capacity = 7;
 
             var knp = new KnapSack();
-            int max = knp.KnapsackBottomUpDp(weight, prices, capacity);
-            Assert.AreEqual(max,9);
+            KnapSack.KnapSackResult result = knp.KnapsackBottomUpDp(weight, prices, capacity);
+            Assert.AreEqual(result.MaxValue, 9);
+            CollectionAssert.AreEqual(result.Weights, new []{3,4});
         }
     }
 }
