@@ -160,25 +160,24 @@ namespace Caldast.AlgoLife.Arrays
         }
         public void Parens(int n)
         {
-            ParentHelper(n, 0, 0, new char[2*n],0);
+            ParenHelper(new char[2 * n], n,n,0);
         }
-        private void ParentHelper(int n, int left, int right, char [] output, int index)
+        private void ParenHelper(char[] output, int leftParenRemaining, int rightParenRemaining, int index)
         {
-            if (output == null)
+           
+            if (leftParenRemaining < 0 || rightParenRemaining < leftParenRemaining)
                 return;
 
-            if (left > n || right > left)
-                return;
-
-            if (left == n && right == n)
+            if (leftParenRemaining == 0 && rightParenRemaining == 0)
             {
                 Console.WriteLine(output);
                 return;
             }
+
             output[index] = '(';
-            ParentHelper(n, left + 1, right, output, index+1);
+            ParenHelper(output, leftParenRemaining-1, rightParenRemaining,index+1);
             output[index] = ')';
-            ParentHelper(n, left, right+1, output, index + 1);
+            ParenHelper(output, leftParenRemaining, rightParenRemaining - 1, index + 1);
         }
     }
 }

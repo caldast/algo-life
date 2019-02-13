@@ -47,7 +47,10 @@
     <Compile Include="Arrays\ArrayProblems.cs" />
     <Compile Include="Arrays\Permutation.cs" />
     <Compile Include="Arrays\StringOperations.cs" />
+    <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\KnapSack.cs" />
+    <Compile Include="DynamicProgramming\LongestCommonSubSequence.cs" />
+    <Compile Include="DynamicProgramming\PaintHouse.cs" />
     <Compile Include="Sorting_Searching\BinarySearch.cs" />
     <Compile Include="Bit Manipulation\BitManipulation.cs" />
     <Compile Include="DynamicProgramming\CutRod.cs" />

@@ -48,8 +48,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicProgramming\CoinChangeTests.cs" />
     <Compile Include="DynamicProgramming\CutRodTests.cs" />
     <Compile Include="DynamicProgramming\KnapSackTests.cs" />
+    <Compile Include="DynamicProgramming\LongestCommonSubSequenceTests.cs" />
+    <Compile Include="DynamicProgramming\LongestIncreasingSubsequenceTests.cs" />
     <Compile Include="GraphUnitTests.cs" />
     <Compile Include="MyQueueTests.cs" />
     <Compile Include="MyStackTests.cs" />
