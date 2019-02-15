@@ -20,7 +20,7 @@ namespace Caldast.AlgoLife.DynamicProgramming
 
             for (int i = 1; i <=length; i++)
             {
-                maxPrice = Math.Max(maxPrice, prices[i] + FindMaxPriceRecursive(prices, length - i));
+                maxPrice = Math.Max(maxPrice, prices[i-1] + FindMaxPriceRecursive(prices, length - i));
             }
             return maxPrice;
         }
