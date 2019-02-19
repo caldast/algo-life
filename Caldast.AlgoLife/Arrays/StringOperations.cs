@@ -1,9 +1,61 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Caldast.AlgoLife.Arrays
 {
     class StringOperations
     {
+        /// <summary>
+        /// Time Complexity: O(1) since the total no of ip addresses (IPv4) is 2^32 (32-bit)
+        /// </summary>
+        /// <returns>The all ip address.</returns>
+        /// <param name="s">S.</param>
+        public List<string> GetAllIpAddress(string s)
+        {
+            var res = new List<string>();
+
+            for (int i = 1; i < 4 && i < s.Length; i++)
+            {
+                string first = s.Substring(0, i);
+
+                if (IsValidIpSegment(first))
+                {
+                    for (int j = 1; j < 4 && i+j < s.Length; j++)
+                    {
+                        string sec = s.Substring(i, j);
+
+                        if (IsValidIpSegment(sec))
+                        {
+                            for (int k = 1; k < 4 && i+j+k < s.Length; k++)
+                            {
+                                string third = s.Substring(i+j, k);
+                                string fourth = s.Substring(i+j+k);
+
+                                if (IsValidIpSegment(third)
+                                    && IsValidIpSegment(fourth))
+                                {
+                                    res.Add(first + "." + sec + "." + third + "." + fourth);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return res;
+        }
+
+        private bool IsValidIpSegment(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+
+            if (s.StartsWith("0", StringComparison.Ordinal) && s.Length > 1)
+                return false;
+
+            int val = int.Parse(s);
+            return val >= 0 && val <= 255;
+        }
         public static void Permute(String str,
                              int l, int r)
         {

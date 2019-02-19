@@ -8,12 +8,97 @@ namespace Caldast.AlgoLife.Number
     public class NumberProblems
     {
 
+        public string ConvertBase(string s, int b1, int b2)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return s;
+
+            if (b1 < 2 || b2 < 2 || b2 > 16)
+                throw new ArgumentException("Invalid base");
+
+            bool isNeg = false;
+            if (s[0] == '-')
+            {
+                isNeg = true;
+                s = s.Substring(1);
+            }
+
+            int num = 0;
+            int i = s.Length - 1;
+            int pow = 1;
+
+            while (i >= 0)
+            {
+                num += (char.IsDigit(s[i]) ? s[i] - '0' : s[i] - 'A' + 10) * pow;
+                pow = pow * b1;
+                i--;
+            }
+
+            var sb = new StringBuilder();
+            i = s.Length - 1;
+            while (num > 0)
+            {
+                char c = num % b2 >= 10 ? (char)('A' + num % b2 - 10) : (char)('0' + num % b2);
+                sb.Append(c);
+                num = num / b2;
+            }
+            string str = Reverse(sb.ToString());
+            return isNeg ? "-" + str : str;
+        }
+
+        public string Reverse(string str)
+        {
+            int s = 0;
+            int e = str.Length - 1;
+            char[] cArr = str.ToCharArray();
+            while (s < e)
+            {
+                char temp = cArr[s];
+                cArr[s] = cArr[e];
+                cArr[e] = temp;
+                s++;
+                e--;
+            }
+            return new string(cArr);
+        }
+        public int StringToInteger(string s)
+        {
+            /*
+                "-12378" = -12378           
+            */
+            if (string.IsNullOrWhiteSpace(s))
+                throw new ArgumentException("input cannot be null or empty");
+
+            bool isNeg = false;
+            int i = 0;
+
+            if (s[0] == '-')
+            {
+                isNeg = true;
+                i = 1;
+            }
+
+            int num = 0;
+            while (i < s.Length)
+            {
+                int val = s[i] - '0';
+                if (val < 0 || val > 9)
+                    throw new Exception("invalid values");
+                num *= 10;
+                num += val;
+                i++;
+            }
+            if (isNeg)
+                num = -num;
+            return num;
+
+        }
         public bool CanFindZero(int[] arr, int startIndex, int searchValue)
         {
             if (arr == null || arr.Length == 0)
                 return false;
 
-            int [] memo = new int[arr.Length];
+            int[] memo = new int[arr.Length];
 
             Initialize(memo);
 
@@ -30,7 +115,7 @@ namespace Caldast.AlgoLife.Number
             }
         }
 
-        private bool CanFindZeroUtil(int[] arr, int startIndex, int [] memo)
+        private bool CanFindZeroUtil(int[] arr, int startIndex, int[] memo)
         {
             if (startIndex < 0 || startIndex >= arr.Length)
                 return false;
@@ -39,7 +124,7 @@ namespace Caldast.AlgoLife.Number
                 return true;
 
             // if searchValue is true in the index, no need to check further
-            if (memo[startIndex] !=- 1)
+            if (memo[startIndex] != -1)
                 return arr[startIndex] == 1;
 
             int next = arr[startIndex];
@@ -56,7 +141,7 @@ namespace Caldast.AlgoLife.Number
             // check if left side is true 
             if (memo[startIndex] == -1 || memo[startIndex] == 0)
             {
-                memo[startIndex] = left? 1:0;
+                memo[startIndex] = left ? 1 : 0;
             }
 
             return left || right;
@@ -215,6 +300,7 @@ namespace Caldast.AlgoLife.Number
             }
 
         }
+   
 
         public string IntToText(int num)
         {

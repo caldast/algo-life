@@ -95,6 +95,7 @@
     <Compile Include="Tree\TreeProblems.cs" />
     <Compile Include="Trie\Trie.cs" />
     <Compile Include="DynamicProgramming\WordBreak.cs" />
+    <Compile Include="DynamicProgramming\MatrixChainMultiplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
