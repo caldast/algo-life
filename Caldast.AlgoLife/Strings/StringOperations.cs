@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Caldast.AlgoLife.Arrays
+namespace Caldast.AlgoLife.Strings
 {
     class StringOperations
     {

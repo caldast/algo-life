@@ -7,8 +7,8 @@ using Caldast.AlgoLife.Arrays;
 using Caldast.AlgoLife.LinkedList;
 using Caldast.AlgoLife.Sorting;
 using Caldast.AlgoLife.Number;
-using Caldast.AlgoLife.DynamicProgramming;
 using Caldast.AlgoLife.Recursion;
+using Caldast.AlgoLife.Strings;
 
 namespace Caldast.AlgoLife
 {
@@ -16,13 +16,14 @@ namespace Caldast.AlgoLife
     {      
         static void Main(string[] args)
         {
+            
             //DoNumberProblems();
             //DoBitManipulation();
 
             //DoSorting();
 
             //DoRecursion();
-            DoDynamicProgramming();
+            //DoDynamicProgramming();
             //DoNumberProblems();
             //DoStringOperations();
 
@@ -163,7 +164,9 @@ namespace Caldast.AlgoLife
             //string s2 = "whitelsaf";
             //bool result=  operations.IsSubSequence(s1, s2, s1.Length, s2.Length);
             //string s = "Mr John Smith    ";
-            //string res = operations.Urlify(s.ToCharArray(), 13);            
+            //string res = operations.Urlify(s.ToCharArray(), 13);       
+           
+
         }
         public static void DoTreeProblems()
         {

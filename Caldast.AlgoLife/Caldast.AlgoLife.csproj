@@ -46,7 +46,9 @@
     <Compile Include="Arrays\ArrayListTemp.cs" />
     <Compile Include="Arrays\ArrayProblems.cs" />
     <Compile Include="Arrays\Permutation.cs" />
-    <Compile Include="Arrays\StringOperations.cs" />
+    <Compile Include="Strings\KMP.cs" />
+    <Compile Include="Strings\RabinKarp.cs" />
+    <Compile Include="Strings\StringOperations.cs" />
     <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\KnapSack.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubSequence.cs" />

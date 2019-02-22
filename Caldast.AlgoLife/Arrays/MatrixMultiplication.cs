@@ -87,10 +87,6 @@
                 StrassenMatrixMultiplication(S7, S8, P6);
                 StrassenMatrixMultiplication(S9, S10, P7);
 
-                if (half == 2)
-                {
-                    var t = 0;
-                }
                 // C11
                 var c11addpart1 = MatrixAdd(P5, P4, half);
                 var c11addpart2 = MatrixSubtract(c11addpart1, P2, half);

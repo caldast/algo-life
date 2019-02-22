@@ -1,4 +1,4 @@
-﻿using Caldast.AlgoLife.Arrays;
+﻿using Caldast.AlgoLife.Strings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
@@ -15,19 +15,6 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void TestMethod2()
-        {
-            var stringOp = new StringOperations();
-            string expected = "";
-            int[] indx = new int[2];
-           
-            string str1 = "abdace";
-            string str2 = "babce";
-           // stringOp.LongestCommonSubSequence(str1,str2,indx,0);
-
-            Assert.Inconclusive();
-            
-        }
+        
     }
 }
