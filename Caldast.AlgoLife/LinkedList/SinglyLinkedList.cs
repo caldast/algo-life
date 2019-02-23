@@ -103,7 +103,7 @@ namespace Caldast.AlgoLife.LinkedList
         }
     }
     public class SinglyLinkedListNode<T>
-    {
+    {        
         public SinglyLinkedListNode(T value)
         {
             Value = value;

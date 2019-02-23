@@ -206,6 +206,56 @@ namespace Caldast.AlgoLife.LinkedList
             list3.AddFirst(new SinglyLinkedListNode<int>(val % 10));
             return new CarryHolder(val / 10);
         }
+
+        public SinglyLinkedListNode<int> DutchNationalFlaSortList(SinglyLinkedListNode<int> list)
+        {
+            if (list == null || list.Next == null)
+            {
+                throw new System.Exception("invalid list");
+
+            }
+
+            var zero = new SinglyLinkedListNode<int>(0);
+            var one = new SinglyLinkedListNode<int>(0);
+            var two = new SinglyLinkedListNode<int>(0);
+
+            SinglyLinkedListNode<int> current = list;
+
+            SinglyLinkedListNode<int> zeroStart = zero;
+            SinglyLinkedListNode<int> oneStart = one;
+            SinglyLinkedListNode<int> twoStart = two;
+
+            while (current != null)
+            {
+                if (current.Value == 0)
+                {
+                    zero.Next = current;
+                    zero = zero.Next;
+                }
+                else if (current.Value == 1)
+                {
+                    one.Next = current;
+                    one = one.Next;
+                }
+                else 
+                {
+                    two.Next = current;
+                    two = two.Next;
+                }
+                current = current.Next;
+
+            }
+           
+            one.Next = twoStart.Next;
+            zero.Next = oneStart.Next;
+
+            two.Next = null;
+
+            list = zeroStart.Next;
+
+            return list;            
+
+        }
     }
     struct CarryHolder
     {
