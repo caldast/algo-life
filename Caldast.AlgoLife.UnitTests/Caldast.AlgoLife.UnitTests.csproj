@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arrays\ArrayProblemsTests.cs" />
     <Compile Include="DynamicProgramming\CoinChangeTests.cs" />
     <Compile Include="DynamicProgramming\CutRodTests.cs" />
     <Compile Include="DynamicProgramming\KnapSackTests.cs" />

@@ -6,6 +6,68 @@ namespace Caldast.AlgoLife.Arrays
 {
     public class ArrayProblems
     {
+        /// <summary>
+        /// Gets spiral order of the 2D m x n array without modifying input.
+        /// Time Complexity: O(mn)
+        /// Space Complexity: O(mn)
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public int[] GetSpiralOrder(int[,] a)
+        {
+            if (a == null)
+            {
+                throw new ArgumentException("input cannot be null");
+            }
+            int m = a.GetLength(0);
+            int n = a.GetLength(1);
+
+            int size = m*n;
+            int[] output = new int[size];
+            int offset = 0;
+            int count = 0;
+
+            while (count < size)
+            {               
+                // square matrix and odd size
+                if (m == n && offset == m - offset - 1)
+                {
+                    output[count++] = a[offset, offset];
+                    break;
+                }
+
+                // traverse the first row
+                for (int i = offset; i < n - offset - 1; i++)
+                {
+                    output[count++] = a[offset,i];
+                }
+
+                // traverse the right-most row 
+                for (int i = offset; i < m-offset-1; i++)
+                {
+                    output[count++] = a[i, n - offset - 1];
+                }
+
+                // traverse the bottom-most row 
+                for (int i = n-offset-1; i>offset; i--)
+                {
+                    output[count++] = a[m - offset - 1,i];
+                }
+
+                // traverse the left-most row 
+                for (int i = m - offset - 1; i > offset; i--)
+                {
+                    output[count++] = a[i,offset];
+                }
+
+                offset++;
+            }
+
+           
+            return output;
+        }
+      
+
         internal static void PrintAllSolutionsToEquation()
         {
             int n = 10;
@@ -44,20 +106,7 @@ namespace Caldast.AlgoLife.Arrays
             }
 
         }
-        class Pair
-        {
-            public int First { get; set; }
-            public int Second { get; set; }
-            public Pair(int _first, int _second)
-            {
-                First = _first;
-                Second = _second;
-            }
-            public override string ToString()
-            {
-                return $"({First},{Second})";
-            }
-        }
+        
         public void Rotate(int[,] m)
         {
             int n = m.GetLength(0);
@@ -550,5 +599,20 @@ namespace Caldast.AlgoLife.Arrays
         }
 
         
+    }
+
+    internal class Pair
+    {
+        public int First { get; set; }
+        public int Second { get; set; }
+        public Pair(int _first, int _second)
+        {
+            First = _first;
+            Second = _second;
+        }
+        public override string ToString()
+        {
+            return $"({First},{Second})";
+        }
     }
 }
