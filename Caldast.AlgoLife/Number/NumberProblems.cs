@@ -8,6 +8,143 @@ namespace Caldast.AlgoLife.Number
     public class NumberProblems
     {
 
+        public int[] GenerateNextPermutation(int[] num)
+        {
+            // the idea is generate next lexicographical permutation
+            // in order to do so we want to increment the sequence as little as possible
+            // To do so, we will have to find a digit to increment. By incrementing I mean swapping with 
+            // some larger number that's already in the num since the permutation needs to be of those numbers only
+            // How to find such number to increase? 
+            // One way is to find the largest non-increasing suffix. Since this suffix is already the largest permutation 
+            // of its own, we need to find a value immediately left of this suffix. 
+            // Once we have this pivot value, we swap with the smallest number in the suffix that's larger than this pivot
+            // Since we want to make this new suffix as smaller as possible, we will sort the suffix. Actually, we don't need 
+            // to sort using sorting algorithm, we can simply reverse and that will take care of the sorting. why? This is because
+            // our suffix was in non-increasing order and we swapped the pivot (which was less than the head element of the suffix)
+            // with an smallest element in the suffix that was larger than pivot so the non-increasing order should be maintained.
+
+            if (num == null)
+            {
+                throw new ArgumentNullException($"{nameof(num)}");
+            }            
+
+            int i = num.Length-1;
+            while (i > 0 && num[i] <= num[i - 1])
+            {
+                i--;
+            }
+            if (i == 0) return num;
+            int pivot = num[i - 1];
+
+            int nextLargerInSuffix = FindSmallestGreaterThanValue(num, pivot, i, num.Length - 1);
+
+            Swap(num, i - 1, nextLargerInSuffix);
+            
+            Reverse(num,i,num.Length-1);
+
+            return num;
+        }
+      
+        private int FindSmallestGreaterThanValue(int[] s, int key, int l, int r)
+        {
+
+            int index = -1;
+            while (l <= r)
+            {
+                int mid = l + (r - l) / 2;
+                if (s[mid] <= key)
+                    r = mid - 1;
+                else
+                {
+                    l = mid + 1;
+                    if (index == -1 || s[index] >= s[mid])
+                        index = mid;
+                }
+            }
+            return index;
+        }
+
+       private void Reverse(int[] arr, int s, int e)
+        {        
+           
+            while (s < e)
+            {
+                int temp = arr[s];
+                arr[s] = arr[e];
+                arr[e] = temp;
+                s++;
+                e--;
+            }
+        }
+
+        /// <summary>
+        /// Generates min number after removing n digits
+        /// Time Complexity: O(n+k)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public string GenerateLowestNumber(string number, int n)
+        {
+            if (string.IsNullOrWhiteSpace(number))
+                throw new ArgumentException("input cannot null or empty");
+
+            if (n == 0)
+                return number;
+            else if (number.Length <= n)
+                return "0";
+            else
+            {
+                var st = new Stack<char>();
+
+                for (int i = 0; i < number.Length; i++)
+                {
+                    while (n > 0 && st.Count > 0 && number[i] < st.Peek())
+                    {
+                        st.Pop();
+                        n--;
+                    }
+
+                    st.Push(number[i]);
+                }
+
+
+                while (n > 0)
+                {
+                    st.Pop();
+                    n--;
+                }
+
+
+                var sb = new StringBuilder();
+                while (st.Count > 0)
+                {
+                    sb.Append(st.Pop());
+                }
+
+                //reverse 
+                Reverse(sb);
+                return sb.ToString();
+            }
+
+        }
+
+        private void Reverse(StringBuilder str)
+        {
+            if (str == null)
+                return;
+
+            int s = 0;
+            int e = str.Length - 1;
+            while (s < e)
+            {
+                char t = str[s];
+                str[s] = str[e];
+                str[e] = t;
+                s++;
+                e--;
+            }
+        }
         public string ConvertBase(string s, int b1, int b2)
         {
             if (string.IsNullOrWhiteSpace(s))
@@ -61,6 +198,8 @@ namespace Caldast.AlgoLife.Number
             }
             return new string(cArr);
         }
+
+       
         public int StringToInteger(string s)
         {
             /*

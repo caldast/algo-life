@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Caldast.AlgoLife</RootNamespace>
     <AssemblyName>Caldast.AlgoLife</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +48,7 @@
     <Compile Include="Arrays\ArrayProblems.cs" />
     <Compile Include="Arrays\DutchNationalFlag.cs" />
     <Compile Include="Arrays\Permutation.cs" />
+    <Compile Include="Stack\StackProblems.cs" />
     <Compile Include="Strings\KMP.cs" />
     <Compile Include="Strings\RabinKarp.cs" />
     <Compile Include="Strings\StringOperations.cs" />

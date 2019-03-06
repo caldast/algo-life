@@ -62,8 +62,7 @@ namespace Caldast.AlgoLife.Arrays
 
                 offset++;
             }
-
-           
+            
             return output;
         }
       
