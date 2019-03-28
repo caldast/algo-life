@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,9 +77,25 @@
     <Compile Include="ParkingLot\Vehicle\Vehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TicTacToe\Model\BoardMembers\Board.cs" />
+    <Compile Include="TicTacToe\Model\BoardMembers\Cell.cs" />
+    <Compile Include="TicTacToe\Model\Move\HumanMove.cs" />
+    <Compile Include="TicTacToe\Model\Move\MachineMove.cs" />
+    <Compile Include="TicTacToe\Model\Player\MachinePlayer.cs" />
+    <Compile Include="TicTacToe\View\ConsoleView.cs" />
+    <Compile Include="TicTacToe\Constant\Constants.cs" />
+    <Compile Include="TicTacToe\Model\Player\HumanPlayer.cs" />
+    <Compile Include="TicTacToe\Model\Move\IMove.cs" />
+    <Compile Include="TicTacToe\Service\ITicTacToeService.cs" />
+    <Compile Include="TicTacToe\View\IView.cs" />
+    <Compile Include="TicTacToe\Model\Player\Player.cs" />
+    <Compile Include="TicTacToe\Enum\Symbol.cs" />
+    <Compile Include="TicTacToe\Controller\TicTacToeController.cs" />
+    <Compile Include="TicTacToe\Service\TicTacToeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="TicTacToe\README.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
