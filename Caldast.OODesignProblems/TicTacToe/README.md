@@ -1,4 +1,4 @@
-<h3>Basic TicTacToe Game<h3>
+<h3>Basic TicTacToe Game</h3>
 
 <p>ITicTacToeService serves as a design contract for Restful API. 
 <br/> Following operations are supported. </p>
