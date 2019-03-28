@@ -38,7 +38,9 @@ namespace Caldast.OODesignProblems.TicTacToe.Model.Player
             return Move.GetLastMove();
         }
 
-
+        /// <summary>
+        /// Symbol
+        /// </summary>
         public virtual Symbol Symbol { get; protected set; }
     } 
 

@@ -104,15 +104,4 @@ namespace Caldast.OODesignProblems.TicTacToe.Controller
         }     
 
     }
-
-   
-
-  
-
-   
-
-   
-
-
-
 }

@@ -17,6 +17,10 @@ namespace Caldast.OODesignProblems.TicTacToe.Model.Move
             Symbol = s;
         }        
 
+        /// <summary>
+        /// Get last move
+        /// </summary>
+        /// <returns></returns>
         public override Cell GetLastMove()
         {
             return GetMove();

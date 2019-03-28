@@ -81,6 +81,7 @@
     <Compile Include="TicTacToe\Model\BoardMembers\Cell.cs" />
     <Compile Include="TicTacToe\Model\Move\HumanMove.cs" />
     <Compile Include="TicTacToe\Model\Move\MachineMove.cs" />
+    <Compile Include="TicTacToe\Model\Move\Move.cs" />
     <Compile Include="TicTacToe\Model\Player\MachinePlayer.cs" />
     <Compile Include="TicTacToe\View\ConsoleView.cs" />
     <Compile Include="TicTacToe\Constant\Constants.cs" />
