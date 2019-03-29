@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Caldast.AlgoLife.Sorting_Searching
+﻿namespace Caldast.AlgoLife.Sorting_Searching
 {
     public class SelectionSort
     {
