@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Caldast.AlgoLife.Strings
 {
@@ -231,5 +232,130 @@ namespace Caldast.AlgoLife.Strings
             output[index] = ')';
             ParenHelper(output, leftParenRemaining, rightParenRemaining - 1, index + 1);
         }
+
+        public void PrintAllCombinations(string input)
+        {
+           
+            char[] cArr = new char[input.Length];
+
+            List<List<char>> lists = GetCharList(input);
+
+            PrintCombinationRecurse(lists, 0, cArr, input.Length);
+        }
+
+        private void PrintCombinationRecurse(List<List<char>> lists, int indx, char[] cArr, int n)
+        {
+            if (indx == n)
+            {
+                foreach (char c in cArr)
+                {
+                    Console.Write(c);
+                }
+                Console.WriteLine();
+                return;
+            }
+
+            for (int i = 0; i < lists[indx].Count; i++)
+            {
+                cArr[indx] = lists[indx][i];
+                PrintCombinationRecurse(lists, indx + 1, cArr, n);
+            }
+        }
+
+        public void PrintAllCombinationsIterative(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return;
+
+            int n = input.Length;
+
+            char[] cArr = new char[n];
+
+            List<List<char>> cList = GetCharList(input);
+
+            for (int i = 0; i < n; i++)
+            {
+                cArr[i] = cList[i][0];
+            }
+
+            while (true)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    Console.Write(cArr[i]);                   
+                }
+                Console.WriteLine();
+
+                for (int j = n - 1; j >= -1; j--)
+                {
+                    if (j == -1)
+                        return;
+                    int k = FindIndex(cArr[j], cList[j]);
+
+                    if (k == -1) continue;
+
+                    if (k == cList[j].Count - 1)
+                    {
+                        cArr[j] = cList[j][0];
+                    }
+                    else
+                    {
+                        cArr[j] = cList[j][k + 1];
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        private int FindIndex(char c, List<char> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (c == list[i])
+                    return i;
+            }
+            return -1;
+        }
+
+        private List<List<char>> GetCharList(string input)
+        {
+            var list = new List<List<char>>();
+            foreach (char c in input)
+            {
+                switch (c)
+                {
+                    case '2':
+                        list.Add(new List<char>() { 'A','B','C' });
+                        break;
+                    case '3':
+                        list.Add(new List<char>() { 'D', 'E', 'F' });
+                        break;
+                    case '4':
+                        list.Add(new List<char>() { 'G', 'H', 'I' });
+                        break;
+                    case '5':
+                        list.Add(new List<char>() { 'J', 'K', 'L' });
+                        break;
+                    case '6':
+                        list.Add(new List<char>() { 'M', 'N', 'O' });
+                        break;
+                    case '7':
+                        list.Add(new List<char>() { 'P', 'Q', 'R','S' });
+                        break;
+                    case '8':
+                        list.Add(new List<char>() { 'T', 'U', 'V'});
+                        break;
+                    case '9':
+                        list.Add(new List<char>() { 'W', 'X', 'Y','Z' });
+                        break;
+
+                }
+            }
+            return list;
+
+        }
+
+       
     }
 }
