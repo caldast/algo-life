@@ -101,7 +101,7 @@ namespace Caldast.AlgoLife.Tree
 
             while (current.Left != null)
                 current = current.Left;
-
+             
             return current;
         }
 
@@ -112,7 +112,7 @@ namespace Caldast.AlgoLife.Tree
         }
         public void Delete(BinaryTreeNode<T> root, BinaryTreeNode<T> nodeToDelete)
         {            
-            if (nodeToDelete.Left == null)
+            if (nodeToDelete.Left == null) 
             {
                 DeleteNode(root, nodeToDelete, nodeToDelete.Right);
             }
@@ -128,15 +128,15 @@ namespace Caldast.AlgoLife.Tree
             }
         }
 
-        private void DeleteNode(BinaryTreeNode<T> root, BinaryTreeNode<T> nodeToDelete, BinaryTreeNode<T> value)
+        private void DeleteNode(BinaryTreeNode<T> root, BinaryTreeNode<T> nodeToDelete, BinaryTreeNode<T> nodeToReplace)
         {
             BinaryTreeNode<T> prev = FindPrev(root, nodeToDelete);
-            if (prev == null)
-                root = nodeToDelete;
+            if (prev == null) 
+                root = nodeToReplace;
             else if (prev.Left == nodeToDelete)
-                prev.Left = value;
+                prev.Left = nodeToReplace;
             else
-                prev.Right = value;
+                prev.Right = nodeToReplace;
         }
 
         private BinaryTreeNode<T> FindPrev(BinaryTreeNode<T> root, BinaryTreeNode<T> node)
