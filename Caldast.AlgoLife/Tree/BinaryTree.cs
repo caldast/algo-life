@@ -10,15 +10,15 @@ namespace Caldast.AlgoLife.Tree
         public BinaryTree(T[] arr)
         {
             _arr = arr;
-            Root = CreateRecursive(0,0);
+            Root = CreateRecursive(0);
         }
-        private BinaryTreeNode<T> CreateRecursive(int index, int counter)
+        private BinaryTreeNode<T> CreateRecursive(int index)
         {
             if (index >= _arr.Length)
                 return null;
-            var n = new BinaryTreeNode<T>(_arr[index]);            
-            n.Left = CreateRecursive(2*index + 1, counter++);
-            n.Right = CreateRecursive(2 * index + 2, counter++);
+            var n = new BinaryTreeNode<T>(_arr[index]);
+            n.Left = CreateRecursive(2*index + 1);
+            n.Right = CreateRecursive(2 * index + 2);
             return n;
         }
         internal IList<T> InorderTraversal()

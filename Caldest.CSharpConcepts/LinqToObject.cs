@@ -153,5 +153,10 @@ namespace Caldest.CSharpConcepts
         {
             return $"{first}: {second}";
         }
+
+        private static void Test1()
+        {
+            Console.WriteLine("Hello");
+        }
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
 {
-    class WeatherData: IWeather
+    class WeatherDataSubject: IWeatherSubject
     {
-        private List<IWeatherObserver> _displays;
-        public WeatherData()
+        private List<IWeatherObserver> _observers;
+        public WeatherDataSubject()
         {
-            _displays = new List<IWeatherObserver>();
+            _observers = new List<IWeatherObserver>();
         }
 
         public double GetTemperature()
@@ -25,16 +25,16 @@ namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
 
         public void Subscribe(IWeatherObserver display)
         {
-            _displays.Add(display);
+            _observers.Add(display);
         }
         public void UnSubscribe(IWeatherObserver display)
         {
-            _displays.Remove(display);
+            _observers.Remove(display);
         }
 
         public void Notify()
         {
-            foreach (var display in _displays)
+            foreach (var display in _observers)
             {
                 display.Update(GetTemperature(),GetHumidity(),GetPressure());
             }

@@ -1,6 +1,6 @@
 ﻿namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
 {
-    interface IWeather
+    interface IWeatherSubject
     {
         void Subscribe(IWeatherObserver display);
         void UnSubscribe(IWeatherObserver display);

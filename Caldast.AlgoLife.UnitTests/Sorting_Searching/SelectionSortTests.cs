@@ -15,7 +15,7 @@ namespace Caldast.AlgoLife.Sorting_Searching.Tests
         public void Should_Sort_Array_Of_Ints()
         {
             int[] arr = { 8, 2, 5, 4, 3, 5, 2, 1, 6, 7, 9, 4 };
-            var selction = new SelectionSort();
+            var selction = new InsertionSort();
             selction.Sort(arr);
             CollectionAssert.AreEqual(new int[] { 1,2,2,3, 4,4, 5,5, 6, 7,8, 9 }, arr);
         }
@@ -23,7 +23,7 @@ namespace Caldast.AlgoLife.Sorting_Searching.Tests
         public void Should_Sort_NegativeNumbers_Array()
         {
             int[] arr = {  -4, -3, -5, -2, -1, -6, -7};
-            var selction = new SelectionSort();
+            var selction = new InsertionSort();
             selction.Sort(arr);
 
             CollectionAssert.AreEqual(new int[] {  -7,-6,-5,-4,-3,-2,-1 }, arr);

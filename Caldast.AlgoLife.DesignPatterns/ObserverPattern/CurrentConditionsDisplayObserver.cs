@@ -2,13 +2,13 @@
 
 namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
 {
-    class WeatherStatisticsDisplay: IDisplay, IWeatherObserver
-    {       
+    class CurrentConditionsDisplayObserver : IDisplay, IWeatherObserver
+    {
+        
         private double _temperature;
         private double _humidity;
-        private double _pressure;
 
-        public WeatherStatisticsDisplay(IWeather weatherData)
+        public CurrentConditionsDisplayObserver(IWeatherSubject weatherData)
         {          
             weatherData.Subscribe(this);
         }
@@ -17,14 +17,12 @@ namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
         {
             Console.WriteLine("Temperature: " + _temperature);
             Console.WriteLine("Humidity: " + _humidity);
-            Console.WriteLine("Pressure: " + _pressure);
         }
 
         public void Update(double temperature, double humidity, double pressure)
         {
-            _temperature = temperature;
+           _temperature = temperature;
             _humidity = humidity;
-            _pressure = pressure;
             Display();
         }
     }

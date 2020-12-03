@@ -1,6 +1,6 @@
 ﻿namespace Caldast.AlgoLife.Sorting_Searching
 {
-    public class SelectionSort
+    public class InsertionSort
     {
         /// <summary>
         /// Selction Sort. 

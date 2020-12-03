@@ -9,23 +9,46 @@ using Caldast.AlgoLife.Sorting;
 using Caldast.AlgoLife.Number;
 using Caldast.AlgoLife.Recursion;
 using Caldast.AlgoLife.Strings;
+using System.Text;
+using System.Linq;
+using Caldast.AlgoLife.OrderStatistics;
+using Caldast.AlgoLife.UnionFind;
 
 namespace Caldast.AlgoLife
 {
     public class Program
-    {      
+    {
+
+
         static void Main(string[] args)
         {
-            
+           
+            //DoSieveOfEratosthenes();
+            //PrintPyramid(); 
+            //DoRangeSumQuery1D();
+            //DoRangeSumQuery2D();
+            //DoParseExpression();
+            //var sol = new Solution();
+            //sol.minimumTime(6, new int[] {1,2,5,10,35,89 });
+            DoOrderStatistics();
+            //DoDisjointSetOperations();
+            //DoSieveOfEratosthenes();
+
+            //DoTrieProbs();           
+
+            //MakeTheNumbersMatch(a: 20, b: 30, x: 5, y: 10);
+
+
             //DoNumberProblems();
             //DoBitManipulation();
 
             //DoSorting();
+            //DoDutchNationalFlagProblem();
 
             //DoRecursion();
             //DoDynamicProgramming();
-            //DoNumberProblems();
-            //DoStringOperations();
+
+            // DoStringOperations();
 
 
             //DoArrayProblems();
@@ -33,6 +56,7 @@ namespace Caldast.AlgoLife
             //DoSinglyLinkedListSum();
             //DoExternalSort();
 
+            //DoTreeNode();
             //DoTreeProblems();
             //DoStringProblems();
             //DoTrieOperation();
@@ -84,7 +108,144 @@ namespace Caldast.AlgoLife
 
             // isFound = tries.Delete("stop");
         }
-        
+
+        public static void DoTreeNode()
+        {
+            var treeNode = new TreeNode(50);
+            treeNode.InsertInOrder(40);
+            treeNode.InsertInOrder(45);
+            treeNode.InsertInOrder(30);
+            treeNode.InsertInOrder(20);
+            treeNode.InsertInOrder(70);
+            treeNode.InsertInOrder(60);
+            treeNode.InsertInOrder(80);
+            treeNode.InsertInOrder(75);
+            treeNode.InsertInOrder(90);
+
+           TreeNode random =  treeNode.GetRandomNode();
+        }
+
+        public static void PrintPyramid()
+        {
+            var pyramid = new HubbAssignment();
+            pyramid.MakePyramid(30);
+
+            //pyramid.MakePyramidQuick(50);
+        }
+        public static void DoParseExpression()
+        {
+            string expression = "2- 6 - 7 * 8 / 2 + 5";
+            var pex = new ParseExpression();
+            double result = pex.ComputeResult(expression);
+        }
+
+        public static void DoRangeSumQuery2D()
+        {
+          var matrix =  new int[][] {
+                  new int[] {3, 0, 1, 4, 2},
+                  new int[] {5, 6, 3, 2, 1},
+                  new int[] {1, 2, 0, 1, 5},
+                  new int[] {4, 1, 0, 1, 7},
+                  new int[] {1, 0, 3, 0, 5}
+            };
+            var numMatrix = new NumMatrix(matrix);            
+            int sum = numMatrix.SumRegion(2, 1, 4, 3); //-> 8
+            sum = numMatrix.SumRegion(1, 1, 2, 2); //-> 11
+            sum = numMatrix.SumRegion(1, 2, 2, 4); //-> 12
+        }
+        public static void DoRangeSumQuery1D()
+        {
+            int[] nums = { int.MaxValue-5, 3, 3 };
+            var numMatrix = new NumArray(nums);
+            int sum = numMatrix.SumRange(0,2); 
+            sum = numMatrix.SumRange(1,2);       
+        }
+        public static void DoDisjointSetOperations()
+        {
+            var set = new DisjointSet<int>();
+            set.MakeSet(1);
+            set.MakeSet(2);
+            set.MakeSet(3);
+            set.MakeSet(4);
+            set.MakeSet(5);
+            set.MakeSet(6);
+
+            set.Union(1, 2);
+            set.Union(2, 3);
+            set.Union(5, 6);
+            set.Union(3, 4);
+            set.Union(4, 5);
+
+           int value= set.FindSet(4);
+        }
+
+        public static void DoOrderStatistics()
+        {
+            var rs = new RandomizedSelect();
+            int[] arr = new int[] { 2,2,3,1};
+
+            int ithsmallest =rs.FindIthSmallest(arr, 0, arr.Length - 1, 3);
+
+            int ith = 6;
+            int ithLargest = rs.FindIthSmallest(arr, 0, arr.Length-1, arr.Length - ith + 1);
+
+
+        }
+
+        public static void DoSieveOfEratosthenes()
+        {
+            var se = new SieveofEratosthenes();
+            se.FindPrimes(499979);
+
+            //List<int> p= se.FindPrimesUsingSegmentedSieve(23);
+            //List<int> primes = se.FindPrimesInRange(10,20);
+        }
+
+        public static void DoTrieProbs()
+        {
+            //var wd = new Trie.WordDictionary();
+
+            //wd.AddWord("bad");
+            //wd.AddWord("dad");
+            //wd.AddWord("mad");
+
+            //Console.WriteLine(wd.Search("pad"));
+            //Console.WriteLine(wd.Search("bad"));
+            //Console.WriteLine(wd.Search(".ad"));
+            //Console.WriteLine(wd.Search("b.."));
+            //Console.WriteLine(wd.Search("..d."));
+
+            var pt = new Trie.PatriciaTrie();
+            pt.STInsert("dog");
+            pt.STInsert("doge");
+            pt.STInsert("dogs");
+        }
+
+        public static bool ConvertToNumber(string str)
+        {
+            bool canConvert = false;
+            try
+            {
+                int n = Int16.Parse(str);
+
+                if (n != 0)
+                {
+                    canConvert = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            bool retval = false;
+            if (canConvert == true)
+            {
+                retval = true;
+            }
+            return retval;
+        }
+
+
         public static void DoLinkedList()
         {
             //var circularLinkedList = new CircularLinkedList();
@@ -92,19 +253,26 @@ namespace Caldast.AlgoLife
 
             //circularLinkedList.DeleteAllOdds();
 
-            //var probs = new LinkedListProblems();
-
             var singlyLinkedList = new SinglyLinkedList<int>();
 
-            int[] arr = { 0, 1, 2,3,4 };
+            singlyLinkedList.AddFirst(new SinglyLinkedListNode<int>(1));
 
-            Array.ForEach(arr, i =>
-                        singlyLinkedList.AddLast(new SinglyLinkedListNode<int>(i)));
+            singlyLinkedList.Remove(1);
+            //int[] arr = { 0,1,2,0,1,2,1};
 
-           
-            singlyLinkedList.Print();
+            //Array.ForEach(arr, i =>
+            //            singlyLinkedList.AddLast(new SinglyLinkedListNode<int>(i)));
 
-         
+            //var probs = new LinkedListProblems();
+            //probs.DutchNationalFlaSortList(singlyLinkedList.Root);
+
+
+
+
+
+            //singlyLinkedList.Print();
+
+
             //SinglyLinkedListNode<int> node = probs.EvenOddMerge(singlyLinkedList.Root);
 
 
@@ -137,14 +305,28 @@ namespace Caldast.AlgoLife
         }
         public static void DoSorting()
         {
-            int[] arr = new int[] {1,2,3,4 };
+          
+            //int[] arr = new int[] {83,5,0,7,1,2};
+            //QuickSort.SortRecursive(arr, 0, arr.Length - 1);
+
+
             //QuickSort.SortIterative(arr, 0, arr.Length - 1);
             //Console.Read();
+           
 
-            BubbleSort b = new BubbleSort();
-            b.Sort(arr);
+            //BubbleSort b = new BubbleSort();
+            //b.Sort(arr);
         }
-        
+
+        public static void DoDutchNationalFlagProblem()
+        {   
+            int[] arr = new int[] { 10,23,17,10,23,23,17};
+            int index = 0;
+            var dnf = new DutchNationalFlag();
+            dnf.Rearrange(arr, index);
+            
+         }
+
 
         public static void DoRecursion()
         {
@@ -165,14 +347,15 @@ namespace Caldast.AlgoLife
             //bool result=  operations.IsSubSequence(s1, s2, s1.Length, s2.Length);
             //string s = "Mr John Smith    ";
             //string res = operations.Urlify(s.ToCharArray(), 13);       
-           
+
+            operations.PrintAllCombinationsIterative("425");
 
         }
         public static void DoTreeProblems()
         {
 
             var treeProblems = new TreeProblems();
-            
+
             //var treeOperation = new TreeOperation<char>();
             //var node = GetBinaryTreeNode();
             //bool isBalanced = treeProblems.IsTreeBalanced(node);
@@ -197,8 +380,11 @@ namespace Caldast.AlgoLife
             //var intNodes = GetIntTreeNode();
             //int max = treeProblems.LongestPath(intNodes);
 
-            var treeNode = GetIntTreeNode();
-            int len =  treeProblems.GetSizeOfLargestCompleteSubTree(treeNode);
+            //var treeNode = GetIntTreeNode();
+            //int len =  treeProblems.GetSizeOfLargestCompleteSubTree(treeNode);
+
+            var arr = new int[] { 6,7,9,10,15,16,17,18,19,25,30,32,35 };
+            //var node = treeProblems.SortedArrayToBST(arr);
         }
         public static void DoArrayProblems()
         {
@@ -217,13 +403,32 @@ namespace Caldast.AlgoLife
 
             //arrayProblems.Multiply(new int[] { 1, 2, 3, 4 }, new int[] { 5, 6 });
 
-            int[] A = new int[] {1,3,5};
-            int[] B = new int[] {2, 4, 6};
+            //int[] A = new int[] {1,3,5};
+            //int[] B = new int[] {2, 4, 6};
 
             //int med = arrayProblems.GetMedian(A, B, A.Length);
             //int med = arrayProblems.GetMedianRecursive(A, B);
             //double med = arrayProblems.FindMedianSortedArrays(A, B, A.Length,B.Length);
-            double med1 = arrayProblems.FindMedian1(A, B, A.Length, B.Length);
+            //double med1 = arrayProblems.FindMedian1(A, B, A.Length, B.Length);
+
+            //int[] arr = new int[] { 10, 22, 5, 75, 65, 80 };
+            //arrayProblems.BuySellStockAtMostTwice(arr, arr.Length);      
+
+            //int[,] inputForSpiral1 = new int[,] { {1,2,3},
+            //                                      {4,5,6},
+            //                                      {7,8,9}
+            //                                    };
+            //int[] spiralOrder1 = arrayProblems.GetSpiralOrder(inputForSpiral1);
+
+            int[,] inputForSpiral = new int[,] { {1,2,3,4,5,6},
+                                                 {7,8,9,1,2,3},
+                                                 {4,5,6,7,8,9},
+                                                 {1,2,3,4,5,6},
+                                                 {7,8,9,1,2,3}
+                                                };
+
+            //int[] spiralOrder = arrayProblems.GetSpiralOrder(inputForSpiral);
+
 
         }
         public static void DoExternalSort()
@@ -231,22 +436,22 @@ namespace Caldast.AlgoLife
             var externalSort = new ExternalSort();
             externalSort.Sort();
         }
-        public static void DoTrieOperation()
-        {
-            var trie = new Trie.Trie();
-            trie.Insert("abcd");
-            trie.Insert("abn");
-            trie.Insert("ghij");
-            trie.Insert("ghijk");
+        //public static void DoTrieOperation()
+        //{
+        //    var trie = new Trie.Trie();
+        //    trie.Insert("abcd");
+        //    trie.Insert("abn");
+        //    trie.Insert("ghij");
+        //    trie.Insert("ghijk");
 
-            Console.WriteLine($"Found 'abn' ={trie.RecursiveSearchWord("abn")}");
-            Console.WriteLine($"Found 'ghij' ={trie.RecursiveSearchWord("ghij")}");
-            trie.Delete("ghij");
-            Console.WriteLine($"Found 'ghij' ={trie.RecursiveSearchWord("ghij")}");
-            Console.WriteLine($"Found 'mnop' ={trie.RecursiveSearchWord("mnop")}");
+        //    Console.WriteLine($"Found 'abn' ={trie.RecursiveSearchWord("abn")}");
+        //    Console.WriteLine($"Found 'ghij' ={trie.RecursiveSearchWord("ghij")}");
+        //    trie.Delete("ghij");
+        //    Console.WriteLine($"Found 'ghij' ={trie.RecursiveSearchWord("ghij")}");
+        //    Console.WriteLine($"Found 'mnop' ={trie.RecursiveSearchWord("mnop")}");
 
 
-        }
+        //}
         public static void DoSinglyLinkedListPartition()
         {            
 
@@ -337,17 +542,18 @@ namespace Caldast.AlgoLife
             //bool res = np.IsMatch("1010", "A");
             // np.MySqrt(2147395599);
 
-            int[] arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8, -10};
-            int n = arr.Length;
+            //int[] arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8, -10};
+            //int n = arr.Length;
 
-            Console.WriteLine("Given array is ");
-            printArray(arr, n);
+            //Console.WriteLine("Given array is ");
+            //printArray(arr, n);
 
-            np.Rearrange(arr, n);
+            //np.Rearrange(arr, n);
 
-            Console.WriteLine("RearrangeD array is ");
-            printArray(arr, n);
-
+            //Console.WriteLine("RearrangeD array is ");
+            //printArray(arr, n);
+            var arr = new int[] { 6,2,1,5,4,3,0};
+            int[] i = np.GenerateNextPermutation(arr);
 
         }
 
@@ -1056,4 +1262,6 @@ namespace Caldast.AlgoLife
     {
         public string Name { get; set; }
     }
+
+   
 }

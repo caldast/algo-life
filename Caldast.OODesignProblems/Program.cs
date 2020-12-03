@@ -11,8 +11,7 @@ namespace Caldast.OODesignProblems
 {
     class Program
     {     
-        public static Player currentPlayer;
-
+       
         public static void Main()
         {
             try

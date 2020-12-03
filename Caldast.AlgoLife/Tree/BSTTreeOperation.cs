@@ -123,7 +123,7 @@ namespace Caldast.AlgoLife.Tree
             else
             {
                 BinaryTreeNode<T> minimum =   FindMinimum(nodeToDelete.Right);               
-                DeleteNode(root,minimum, minimum.Right ?? minimum.Left);
+                DeleteNode(root,minimum, minimum.Right);
                 nodeToDelete.Value = minimum.Value;
             }
         }
