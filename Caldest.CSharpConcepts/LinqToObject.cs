@@ -9,7 +9,9 @@ namespace Caldest.CSharpConcepts
     public class State
     {
         public string Name { get; set; }
-        public string City { get; set; }    
+        public string City { get; set; }
+        
+        public string TwoLetterCode { get; set; }
     }
 
     class Person
@@ -25,9 +27,9 @@ namespace Caldest.CSharpConcepts
 
         private IEnumerable<State> _usStates = new State[]
         {
-            new State{ City = "Saint Paul", Name = "Minnesota"},
-            new State{ City = "San Fransisco", Name = "California"},
-            new State{ City = "Spokane", Name = "Washington"},
+            new State{ City = "Saint Paul", Name = "Minnesota",  TwoLetterCode = "MN" },
+            new State{ City = "San Fransisco", Name = "California",  TwoLetterCode = "CA"},
+            new State{ City = "Spokane", Name = "Washington",  TwoLetterCode = "WA"},
             new State{ City = "New York", Name = "New York"},
             new State{ City = "Helena", Name = "Montana"},
             new State{ City = "Orlando", Name = "Florida"},
@@ -36,7 +38,15 @@ namespace Caldest.CSharpConcepts
 
         };
 
-       
+        public void Join()
+        {
+            var query = from state in _usStates
+                        join abb in _abbs on state.TwoLetterCode equals abb
+                        select state;
+
+            var query1 = _usStates.Join(_abbs, s => s.TwoLetterCode, a => a, 
+                (s, a) => s);
+        }
 
         public IEnumerable<State> GetAllStates(string startsWith)
         {
@@ -154,9 +164,5 @@ namespace Caldest.CSharpConcepts
             return $"{first}: {second}";
         }
 
-        private static void Test1()
-        {
-            Console.WriteLine("Hello");
-        }
     }
 }
