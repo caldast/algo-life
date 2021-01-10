@@ -35,7 +35,7 @@ namespace Caldast.AlgoLife.DesignPatterns.MVC
             foreach (var view in _locationObservers)
             {
                 var observer = (ILocationObserver) view;
-                view.Update();
+                observer.Update();
             }
            
         }

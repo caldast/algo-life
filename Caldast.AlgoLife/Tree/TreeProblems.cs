@@ -237,4 +237,79 @@ namespace Caldast.AlgoLife.Tree
         
 
     }
+
+    public class TreeNode
+    {
+        private int data;
+        public TreeNode left;
+        public TreeNode right;
+        private int size = 0;
+
+        public TreeNode(int d)
+        {
+            data = d;
+            size = 1;
+        }
+
+        public TreeNode GetRandomNode()
+        {
+            int leftSize = left == null ? 0 : left.Size;
+            Random random = new Random();
+            int index = random.Next(size);
+            if (index < leftSize)
+            {
+                return left.GetRandomNode();
+            }
+            else if (index == leftSize)
+            {
+                return this;
+            }
+            else
+            {
+                return right.GetRandomNode();
+            }
+        }
+
+        public void InsertInOrder(int d)
+        {
+            if (d <= data)
+            {
+                if (left == null)
+                {
+                    left = new TreeNode(d);
+                }
+                else
+                {
+                    left.InsertInOrder(d);
+                }
+            }
+            else
+            {
+                if (right == null)
+                {
+                    right = new TreeNode(d);
+                }
+                else
+                {
+                    right.InsertInOrder(d);
+                }
+            }
+
+            size++;
+        }
+
+        public TreeNode Find(int d)
+        {
+            if (d == data)
+                return this;
+            else if (d <= data)
+                return left!=null ? left.Find(d) : null;
+            else if( d > data) 
+                return right!= null ? right.Find(d) : null;
+            return null;
+        }
+
+        public int Size => size;
+        public int Data => data;
+    }
 }

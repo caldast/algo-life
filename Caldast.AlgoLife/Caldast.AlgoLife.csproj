@@ -44,13 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arrays\ArrayListTemp.cs" />
     <Compile Include="Arrays\ArrayProblems.cs" />
     <Compile Include="Arrays\DutchNationalFlag.cs" />
     <Compile Include="Arrays\Permutation.cs" />
+    <Compile Include="Arrays\SieveofEratosthenes.cs" />
+    <Compile Include="Graph\Kruskal\KruskalMST.cs" />
+    <Compile Include="Graph\MinHeapDict.cs" />
+    <Compile Include="Graph\NetworkDelayTime.cs" />
+    <Compile Include="Graph\SimpleGraph.cs" />
+    <Compile Include="Graph\StronglyConnectedComponent.cs" />
+    <Compile Include="OrderStatistics\RandomizedSelect.cs" />
+    <Compile Include="Arrays\RangeSumQuery.cs" />
     <Compile Include="Stack\StackProblems.cs" />
     <Compile Include="Strings\KMP.cs" />
+    <Compile Include="Strings\ParseExpression.cs" />
     <Compile Include="Strings\RabinKarp.cs" />
+    <Compile Include="Strings\HubbAssignment.cs" />
     <Compile Include="Strings\StringOperations.cs" />
     <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\KnapSack.cs" />
@@ -72,7 +81,7 @@
     <Compile Include="LinkedList\XorLinkedList.cs" />
     <Compile Include="Number\NumberProblems.cs" />
     <Compile Include="Recursion\CoinGame.cs" />
-    <Compile Include="Sorting_Searching\SelectionSort.cs" />
+    <Compile Include="Sorting_Searching\InsertionSort.cs" />
     <Compile Include="Tree\BinaryTree.cs" />
     <Compile Include="Tree\BinaryTreeNode.cs" />
     <Compile Include="Tree\BSTOperation.cs" />
@@ -98,9 +107,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tree\PreOrderTraversal.cs" />
     <Compile Include="Tree\TreeProblems.cs" />
-    <Compile Include="Trie\Trie.cs" />
     <Compile Include="DynamicProgramming\WordBreak.cs" />
     <Compile Include="DynamicProgramming\MatrixChainMultiplication.cs" />
+    <Compile Include="Trie\PatriciaTrie.cs" />
+    <Compile Include="Trie\Trie.cs" />
+    <Compile Include="Trie\WordDictionary.cs" />
+    <Compile Include="UnionFind\DisjointSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -108,5 +120,6 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

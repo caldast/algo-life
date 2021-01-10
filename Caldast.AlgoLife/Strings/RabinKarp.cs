@@ -17,6 +17,7 @@
 
             const int q = 17;
             const int d = 256;
+
             int m = pattern.Length;
             int n = text.Length;
             int i = 0;
@@ -24,7 +25,6 @@
             int pHash = 0; 
             int textHash = 0;  
             int highDegree  = 1;
-
             
             for (i = 0; i < m - 1; i++)
                 highDegree  = (highDegree  * d) % q;

@@ -2,27 +2,25 @@
 
 namespace Caldast.AlgoLife.DesignPatterns.ObserverPattern
 {
-    class CurrentConditionsDisplay: IDisplay, IWeatherObserver
-    {
-        
+    class SimpleForecastDisplayObserver: IDisplay, IWeatherObserver
+    {       
         private double _temperature;
-        private double _humidity;
-
-        public CurrentConditionsDisplay(IWeather weatherData)
+        public SimpleForecastDisplayObserver(IWeatherSubject weatherData)
         {          
             weatherData.Subscribe(this);
         }
 
         public void Display()
         {
-            Console.WriteLine("Temperature: " + _temperature);
-            Console.WriteLine("Humidity: " + _humidity);
+            if (_temperature > 60)
+            {
+                Console.WriteLine("Warm");
+            }
         }
 
         public void Update(double temperature, double humidity, double pressure)
         {
-           _temperature = temperature;
-            _humidity = humidity;
+            _temperature = temperature;
             Display();
         }
     }

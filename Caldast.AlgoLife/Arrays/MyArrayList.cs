@@ -1,67 +1,117 @@
-﻿using System;
-
+﻿
 namespace Caldast.AlgoLife
 {
-    internal class MyArrayList
+    using System;
+
+    /// <summary>
+    /// Arraylist implementation
+    /// </summary>
+    /// <typeparam name="T">Type</typeparam>
+    public class MyArrayList<T>
     {
-        private int _size = 0;
-        private int[] _arr;
-        private int _index = -1;
-        internal MyArrayList(int size)
-        {
-            _size = size;
-            _arr = new int[_size];            
+        private int _count = 0;
+        private T[] _arr;
+        private const int _factor = 2;
+
+        /// <summary>
+        /// Gets count of items in list
+        /// </summary>
+        public int Count => _count;
+
+        /// <summary>
+        /// Initializes new instance of <see cref="MyArrayList{T}"/>
+        /// </summary>
+        /// <param name="capacity">Capacity</param>
+        public MyArrayList(int capacity = 0)
+        {          
+            _arr = new T[_count];            
         }
-        internal void Add(int value)
-        {
-            _index++;
-            if (_index == _size)
+
+        /// <summary>
+        /// Adds item at the end of the list
+        /// </summary>
+        /// <param name="item">Item to add</param>
+        public void Add(T item)
+        {      
+            if (_count >= _arr.Length)
             {
-                _size = _size == 0 ? 1 : _size * 2;
-                int[] newArr = new int[_size];
-                for (int i = 0; i < _arr.Length; i++)
-                {
-                    newArr[i] = _arr[i];
-                }
-                _arr = newArr;
+                Increment();
             }
-            _arr[_index] = value;
+            _arr[_count++] = item;
         }
-        internal void Remove(int index)
+
+        /// <summary>
+        /// Removes item from the list at specified index
+        /// </summary>
+        /// <param name="index">Index</param>
+        public void RemoveAt(int index)
         {
-            if (index < 0 || index >= _size)
+            if (index < 0 || index >= _count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
-            int i = index;
-            while (i < _size - 1)
+            
+            while (index < _count)
             {
-                _arr[i] = _arr[i + 1];
-                i++;
-            }
-            _arr[i] = 0;
-            _index--;
-            _size--;
+                _arr[index] = _arr[index + 1];
+                index++;
+            }            
+            _count--;
         }
-        internal int FindElement(int element)
+
+        /// <summary>
+        /// Removes item from list
+        /// </summary>
+        /// <param name="item">Item to remove</param>
+        public void Remove(T item)
         {
-            for (int i = 0; i <= _index; i++)
+            int index = Find(item);
+            if (index != -1)
             {
-                if (_arr[i] == element)
+                RemoveAt(index);
+            }
+        }
+
+        /// <summary>
+        /// Finds index of an item if present, otherwise returns -1
+        /// </summary>
+        /// <param name="item">Item whose index is to be found</param>
+        /// <returns>Index</returns>
+        public int Find(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (_arr[i].Equals(item))
                 {
                     return i;
                 }
             }
             return -1;
         }
-        internal int Find(int index)
+
+        /// <summary>
+        /// Returns item at specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>Item</returns>
+        public T FindAt(int index)
         {
-            if (index < 0 || index >= _size)
+            if (index < 0 || index >= _count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
             return _arr[index];
-        }
+        }      
 
+        /// <summary>
+        /// Increments array by a factor
+        /// </summary>
+        private void Increment()
+        {
+            int newCount = _count == 0 ? 1 : _count * _factor;
+            T[] newArr = new T[newCount];
+            Array.Copy(_arr,newArr,_count);            
+            _arr = newArr;
+        }
     }
 }

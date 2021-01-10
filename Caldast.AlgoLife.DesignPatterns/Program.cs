@@ -62,11 +62,11 @@ namespace Caldast.AlgoLife.DesignPatterns
         }
         public static void ObserverPattern()
         {
-            IWeather weatherData = new WeatherData();
+            IWeatherSubject weatherData = new WeatherDataSubject();
 
-            IWeatherObserver currentConditionDisplay = new CurrentConditionsDisplay(weatherData);
-            IWeatherObserver weatherStatisticsDisplay = new WeatherStatisticsDisplay(weatherData);
-            IWeatherObserver simpleForecastDisplay = new SimpleForecastDisplay(weatherData);           
+            IWeatherObserver currentConditionDisplay = new CurrentConditionsDisplayObserver(weatherData);
+            IWeatherObserver weatherStatisticsDisplay = new WeatherStatisticsDisplayObserver(weatherData);
+            IWeatherObserver simpleForecastDisplay = new SimpleForecastDisplayObserver(weatherData);           
 
             weatherData.Notify();
 

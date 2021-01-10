@@ -43,20 +43,25 @@ namespace Caldast.AlgoLife.LinkedList
 
         public void Remove(T value)
         {
-            if (Root == null)
+            if (Root == null || Last == null)
                 return;
 
-            SinglyLinkedListNode<T> current = Root;
+          
             if (Root.Value.Equals(value))
             {
                 Root = Root.Next;
-                current.Next = null;
+
+                if (Last.Value.Equals(value)) 
+                {
+                    Last = Last.Next;
+                }
+
                 return;
             }
 
-            SinglyLinkedListNode<T> prev = current;
-
-            current = current.Next;
+            SinglyLinkedListNode<T> current = Root.Next;
+            SinglyLinkedListNode<T> prev = Root;
+           
             while (current != null)
             {
                 if (current.Value.Equals(value))

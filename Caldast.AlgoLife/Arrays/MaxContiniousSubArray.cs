@@ -37,7 +37,7 @@
             for (int i = 0; i < n; i++) {
                 result = result + a[i];
                 if (result > maxSum) {
-                    maxSum = result;
+                    maxSum = result;  
                     leftStart = tempPointer;
                     rightEnd = i;
                 }

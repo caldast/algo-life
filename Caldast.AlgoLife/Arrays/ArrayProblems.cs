@@ -595,10 +595,9 @@ namespace Caldast.AlgoLife.Arrays
                 Console.WriteLine($"Moved From = {s} to {d}");
                 dest.Push(src.Pop());
             }
-        }
-
+        }      
         
-    }
+}
 
     internal class Pair
     {

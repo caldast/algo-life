@@ -138,25 +138,6 @@ namespace Caldast.AlgoLife.Sorting
 
         }
 
-        private void FetchFromInputFile(string filename, int start, int end, int [] arr)
-        {
-            using (var reader = new StreamReader(filename))
-            {                
-                int j = 0;
-                while (end >= start)
-                {
-
-                    char i = (char)reader.Read();             
-                    arr[j++] = Convert.ToInt32(i.ToString());
-                    start++;
-                   
-                                   
-                }
-                reader.Close();
-            }
-           
-        }
-
         private void WriteToFile(string filename, int[] arr)
         {
             using (var writer = new StreamWriter(filename))
@@ -172,8 +153,6 @@ namespace Caldast.AlgoLife.Sorting
             }
 
         }
-
-        
 
     }
 

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Caldast.AlgoLife.Graph;
 using Caldast.AlgoLife.Graph.Prim_sAlgorithm;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Caldast.AlgoLife.UnitTests
@@ -8,12 +10,12 @@ namespace Caldast.AlgoLife.UnitTests
     [TestClass]
     public class GraphUnitTests
     {
-        PrimsMST.Graph graph = null;
-        PrimsMST.MinHeapDict minHeapDict = null;
+        SimpleGraph graph = null;
+        MinHeapDict<Vertex> minHeapDict = null;
         [TestInitialize]
         public void Initalize()
         {
-            graph = new PrimsMST.Graph(false);
+            graph = new SimpleGraph(false);
             graph.AddEdge(1, 2, 5);
             graph.AddEdge(1, 3, 6);
             graph.AddEdge(2, 4, 3);
@@ -25,48 +27,33 @@ namespace Caldast.AlgoLife.UnitTests
             graph.AddEdge(4, 6, 1);
             graph.AddEdge(5, 6, 4);
 
-            minHeapDict = new PrimsMST.MinHeapDict();
+            minHeapDict = new MinHeapDict<Vertex>();
         }
 
         [TestMethod]
-        public void Vertices_Values_Must_Be()
+        public void GetVerticesReturnsCorrectVertices()
         {
-            var expected = new LinkedList<PrimsMST.Graph.Vertex>();
+            var expected = new List<Vertex>();
             for (int i = 1; i <= 6; i++)
-                expected.AddLast(new PrimsMST.Graph.Vertex(i));
+                expected.Add(new Vertex(i));
 
-            LinkedList<PrimsMST.Graph.Vertex> actual = graph.GetVertices();
+            List<Vertex> actual = graph.GetVertices().ToList();
             CollectionAssert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Edges_Values_Must_Be()
-        //{
-        //    var expected = new LinkedList<Graph.Vertex>();
-        //    for (int i = 1; i <= 6; i++)
-        //        expected.AddLast(new Graph.Vertex(i));
-
-        //    LinkedList<Graph.Vertex> vertices = graph.GetVertices();
-
-        //    foreach (Graph.Vertex v in vertices)
-        //    {
-        //        LinkedList<Graph.Edge> edges = v.GetAdjanceEdges();
-        //    }
-
-        //    Assert.Inconclusive();
-        //}
+       
 
         [TestMethod]
-        public void Min_Heap_Should_Give_Min()
+        public void MinHeapShouldGiveMinValue()
         {
-            LinkedList<PrimsMST.Graph.Vertex> vertices = graph.GetVertices();
+            List<Vertex> vertices = graph.GetVertices().ToList();
 
-            foreach (PrimsMST.Graph.Vertex vertex in vertices)
+            foreach (Vertex vertex in vertices)
             {
                 minHeapDict.Add(vertex, int.MaxValue);
             }
 
-            PrimsMST.Graph.Vertex first = vertices.First();
+            Vertex first = vertices.First();
             minHeapDict.DecreaseKey(first, 0);
 
             Assert.AreEqual(minHeapDict.Min(), first);
@@ -75,16 +62,16 @@ namespace Caldast.AlgoLife.UnitTests
         [TestMethod]
         public void Extract_Heap_Should_Give_Min()
         {
-            LinkedList<PrimsMST.Graph.Vertex> vertices = graph.GetVertices();
+            List<Vertex> vertices = graph.GetVertices().ToList();
 
-            foreach (PrimsMST.Graph.Vertex vertex in vertices)
+            foreach (Vertex vertex in vertices)
             {
                 minHeapDict.Add(vertex, int.MaxValue);
             }
 
-            PrimsMST.Graph.Vertex expected = vertices.First();
+            Vertex expected = vertices.First();
 
-            PrimsMST.Graph.Vertex actual = minHeapDict.ExtractMin();
+            Vertex actual = minHeapDict.ExtractMin();
 
             Assert.AreEqual(expected, actual);
 
@@ -93,8 +80,9 @@ namespace Caldast.AlgoLife.UnitTests
         public void Find_MST_Should_Give_MST()
         {
             var primsMST = new PrimsMST();
-            List<PrimsMST.Graph.Edge> mst = primsMST.FindMST(graph);
-            Assert.Inconclusive();
+            List<Edge> mst = primsMST.FindMST(graph);
+
+            mst.Should().HaveCount(5);
         }
     }
 }

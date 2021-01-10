@@ -47,13 +47,13 @@ namespace Caldast.AlgoLife
             }
             
         }
-        private static int LomutoPartition(int[] a, int p, int r)
+        private static int LomutoPartition(int[] a, int l, int r)
         {
-            int x = a[r];
-            int i = p - 1;
-            for (int j = p; j <= r - 1; j++)
+            int p = a[r];
+            int i = l - 1;
+            for (int j = l; j <= r - 1; j++)
             {
-                if (a[j] <= x)
+                if (a[j] <= p)
                 {
                     i = i + 1;
                     Swap(a, i, j);
@@ -63,7 +63,7 @@ namespace Caldast.AlgoLife
             return i + 1;
         }
 
-        private static int HoarePartition(int[] a, int p, int r) {
+        public static int HoarePartition(int[] a, int p, int r) {
             int partition = a[p];
             int i = p - 1;
             int j = r+1;

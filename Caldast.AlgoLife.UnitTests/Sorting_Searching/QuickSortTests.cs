@@ -23,7 +23,7 @@ namespace Caldast.AlgoLife.Tests
         [TestMethod()]
         public void SortIterativeTest()
         {
-            var arr = new int[] { 4, 3, 2, 1, 0 };
+            var arr = new int[] { 3,5,7,4,1,2};
 
             QuickSort.SortIterative(arr, 0, arr.Length - 1);
             CollectionAssert.AreEqual(arr, new int[] { 0, 1, 2, 3, 4 });
